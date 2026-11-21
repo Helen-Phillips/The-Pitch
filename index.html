@@ -173,6 +173,9 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
 .sheet{position:absolute;inset:auto 0 0 0;background:var(--screen);border-top:1px solid var(--line);border-radius:24px 24px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;gap:12px;box-shadow:0 -20px 40px -20px rgba(0,0,0,.3);z-index:5;max-height:80%;overflow:auto}
 .scrim{position:absolute;inset:0;background:rgba(8,21,23,.45);z-index:4}
 .spacer{flex:1}
+.tr{display:block;margin-top:8px;padding-top:8px;border-top:1px solid color-mix(in srgb, currentColor 25%, transparent);font-size:14px;font-weight:400;opacity:.85}
+.h1-fr{font-family:var(--display);font-size:20px;font-weight:700;color:var(--muted);margin-top:-6px}
+.opt .en{display:block;font-size:13px;color:var(--muted);margin-top:2px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-weight:700;font-size:14px}
 .field textarea{font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px;min-height:84px;resize:vertical;width:100%;box-sizing:border-box}
@@ -198,34 +201,36 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
       <div class="top"><span class="eyebrow">The Pitch</span><span class="tag">Business English</span></div>
       <div class="hero-alice">
         <div class="avatar big" data-alice></div>
-        <h1>Stop translating.<br>Start owning the room.</h1>
-        <div class="bubble"><span class="who">Alice</span><span data-line="welcome"></span></div>
+        <h1 lang="en">Stop translating.<br>Start owning the room.</h1>
+        <p class="h1-fr">Arrêtez de traduire. Prenez la place qui vous revient.</p>
+        <div class="bubble"><span class="who">Alice</span><span data-line="welcome" lang="en"></span><span class="tr" data-line-fr="welcome"></span></div>
       </div>
       <div class="spacer"></div>
       <div>
-        <p class="eyebrow" style="margin-bottom:8px">Votre langue</p>
+        <p class="eyebrow" style="margin-bottom:8px">Votre langue · Your language</p>
         <div class="choice" id="langs">
           <button class="opt" aria-pressed="true"><span class="flag">FR</span><span>Français<small>Explications en français</small></span></button>
           <button class="opt" disabled><span class="flag">ES</span><span>Español</span><span class="soon">Bientôt</span></button>
           <button class="opt" disabled><span class="flag">DE</span><span>Deutsch</span><span class="soon">Bientôt</span></button>
         </div>
       </div>
-      <button class="btn spot" data-go="check">Commencer</button>
+      <button class="btn spot" data-go="check">Commencer · Let's go</button>
     </section>
 
     <!-- 2. Voice check -->
     <section class="screen" id="s-check" hidden>
       <div class="top"><button class="icon-btn" data-go="welcome">← Retour</button><span class="eyebrow">Test de 2 minutes</span></div>
       <h2>Quand la réunion passe en anglais, vous…</h2>
+      <p class="muted" lang="en" style="margin-top:-10px">When the meeting switches to English, you…</p>
       <p class="fr">Dans l'appli finale, Alice écoute votre voix pendant 2 minutes. Ici, choisissez la réponse qui vous ressemble.</p>
       <div class="choice" id="check-opts">
-        <button class="opt" data-level="0"><span>…devenez soudain très intéressé·e par vos chaussures.</span></button>
-        <button class="opt" data-level="1"><span>…comprenez tout, mais vous attendez trop longtemps pour parler.</span></button>
-        <button class="opt" data-level="2"><span>…parlez, mais pas comme vous le feriez en français.</span></button>
+        <button class="opt" data-level="0"><span>…devenez soudain très intéressé·e par vos chaussures.<span class="en" lang="en">…suddenly find your shoes fascinating.</span></span></button>
+        <button class="opt" data-level="1"><span>…comprenez tout, mais vous attendez trop longtemps pour parler.<span class="en" lang="en">…understand everything, but wait too long to speak.</span></span></button>
+        <button class="opt" data-level="2"><span>…parlez, mais pas comme vous le feriez en français.<span class="en" lang="en">…speak, but not the way you would in French.</span></span></button>
       </div>
       <div class="alice" id="check-reply" hidden>
         <div class="avatar" data-alice></div>
-        <div class="bubble"><span class="who">Alice</span><span id="check-line"></span></div>
+        <div class="bubble"><span class="who">Alice</span><span id="check-line" lang="en"></span><span class="tr" id="check-line-fr"></span></div>
       </div>
       <div class="spacer"></div>
       <button class="btn" id="check-next" data-go="home" disabled>Voir ma carte</button>
@@ -468,7 +473,8 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   const VERDICT=C.sessionVerdicts;
   const state={roast:true,clean:false,stars:{intro:2,small:1,update:1,disagree:0},extraPhrases:0,firstWrong:null};
   const say=(o)=>{ if(!state.roast) return o.soft; if(state.clean && o.clean) return o.clean; return o.roast; };
-  function renderLines(){ document.querySelectorAll('[data-line]').forEach(el=>el.textContent=say(LINES[el.dataset.line])); }
+  function renderLines(){ document.querySelectorAll('[data-line]').forEach(el=>el.textContent=say(LINES[el.dataset.line]));
+    document.querySelectorAll('[data-line-fr]').forEach(el=>{ const o=LINES[el.dataset.lineFr]; el.textContent=o&&o.fr?say(o.fr):''; }); }
 
   const SIT=C.situations;
   const starSvg=on=>`<svg class="star${on?' on':''}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z"/></svg>`;
@@ -527,6 +533,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   document.querySelectorAll('#check-opts .opt').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('#check-opts .opt').forEach(x=>x.setAttribute('aria-pressed', x===b));
     document.getElementById('check-line').textContent=say(CHECK[+b.dataset.level]);
+    document.getElementById('check-line-fr').textContent=CHECK[+b.dataset.level].fr?say(CHECK[+b.dataset.level].fr):'';
     document.getElementById('check-reply').hidden=false;
     document.getElementById('check-next').disabled=false;
   }));

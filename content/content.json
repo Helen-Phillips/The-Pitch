@@ -1,9 +1,13 @@
 {
-  "_readme": "All the words of The Pitch live here. Change any sentence between quotes and keep the quotes, commas and brackets as they are. 'roast' is Alice at level 5, 'soft' is the gentle setting, 'clean' is the no-swearing version.",
+  "_readme": "All the words of The Pitch live here. Change any sentence between quotes and keep the quotes, commas and brackets as they are. 'roast' is Alice at level 5, 'soft' is the gentle setting, 'clean' is the no-swearing version. Where a line has an 'fr' part, that is the French translation shown underneath during the first steps.",
   "aliceLines": {
     "welcome": {
       "roast": "I'm Alice. I've sat through a thousand meetings so you don't have to suffer through one more in silence. Ready?",
-      "soft": "I'm Alice. I'll help you speak up in English meetings, one small step at a time."
+      "soft": "I'm Alice. I'll help you speak up in English meetings, one small step at a time.",
+      "fr": {
+        "roast": "Moi, c'est Alice. J'ai survécu à mille réunions pour que vous n'en subissiez plus une seule en silence. Prêt·e ?",
+        "soft": "Moi, c'est Alice. Je vais vous aider à prendre la parole en réunion en anglais, petit à petit."
+      }
     },
     "comeback": {
       "roast": "When the shit hits the fan, some guys run and some guys stay… glad you decided to stay.",
@@ -22,15 +26,27 @@
   "voiceCheckReplies": [
     {
       "roast": "Your shoes aren't going to pitch for you, darling. We start with Survive. Lots of it.",
-      "soft": "Totally normal. We'll start with ready-made phrases that get you through."
+      "soft": "Totally normal. We'll start with ready-made phrases that get you through.",
+      "fr": {
+        "roast": "Vos chaussures ne vont pas pitcher à votre place, chéri·e. On commence par Survive. Beaucoup de Survive.",
+        "soft": "C'est tout à fait normal. On commence par des phrases toutes prêtes pour vous en sortir."
+      }
     },
     {
       "roast": "Translating in your head again? I can hear the gears from here. We'll speed you up.",
-      "soft": "You understand more than you think. Let's get you speaking sooner."
+      "soft": "You understand more than you think. Let's get you speaking sooner.",
+      "fr": {
+        "roast": "Encore en train de traduire dans votre tête ? J'entends les rouages d'ici. On va accélérer tout ça.",
+        "soft": "Vous comprenez plus que vous ne le pensez. On va vous faire parler plus tôt."
+      }
     },
     {
       "roast": "So you're fluent, just… beige. Let's give you some personality in English.",
-      "soft": "Great base. Now let's make your English sound like you."
+      "soft": "Great base. Now let's make your English sound like you.",
+      "fr": {
+        "roast": "Donc vous parlez anglais, mais… en beige. On va donner un peu de personnalité à votre anglais.",
+        "soft": "Belle base. Maintenant, faisons en sorte que votre anglais vous ressemble."
+      }
     }
   ],
   "sessionVerdicts": {

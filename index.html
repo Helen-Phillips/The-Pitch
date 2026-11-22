@@ -261,7 +261,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
         <div class="top"><span class="eyebrow">Alice vous propose</span><span class="stars" data-stars="disagree"></span></div>
         <h3>Disagree politely</h3>
         <p class="fr">Dire non sans se faire d'ennemis. Face à vous : Brad, du bureau de New York.</p>
-        <button class="btn spot" data-go="session">C'est parti · 5 min</button>
+        <button class="btn spot" data-go="session" data-lesson="disagree">C'est parti · 5 min</button>
       </div>
       <div class="stats">
         <div class="stat"><b id="stat-stars">4</b><small>étoiles gagnées</small></div>
@@ -305,37 +305,31 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
 
     <!-- 7. Session -->
     <section class="screen" id="s-session" hidden>
-      <div class="top"><button class="icon-btn" data-go="home">✕ Quitter</button><span class="eyebrow">Disagree politely</span></div>
+      <div class="top"><button class="icon-btn" data-go="home">✕ Quitter</button><span class="eyebrow" id="l-title"></span></div>
       <div class="progress" id="prog"><span></span><span></span><span></span><span></span><span></span></div>
 
       <div data-step="0" class="next">
         <span class="eyebrow">1 · L'accroche</span>
         <div class="alice"><div class="avatar" data-alice></div>
-          <div class="bubble"><span class="who">Alice</span>Saying “No, that's wrong” in a meeting is how you get fewer meetings. Let's fix that.</div></div>
-        <p class="fr">Aujourd'hui : être en désaccord sans claquer la porte.</p>
+          <div class="bubble"><span class="who">Alice</span><span id="l-hook" lang="en"></span></div></div>
+        <p class="fr" id="l-hookfr"></p>
         <button class="btn" data-step-next>Continuer</button>
       </div>
 
       <div data-step="1" class="next" hidden>
         <span class="eyebrow">2 · Trois phrases</span>
         <p class="fr">Écoutez, répétez à voix haute. Le surligné, c'est là où on appuie.</p>
-        <div class="card phrase"><p>I see where you're <b>com</b>ing from, <b>but</b>…</p><button class="play" data-say="I see where you're coming from, but…" aria-label="Écouter">▶</button></div>
-        <div class="card phrase"><p>I'm not <b>sure</b> that's the best <b>op</b>tion.</p><button class="play" data-say="I'm not sure that's the best option." aria-label="Écouter">▶</button></div>
-        <div class="card phrase"><p>Could we look at it from a<b>noth</b>er angle?</p><button class="play" data-say="Could we look at it from another angle?" aria-label="Écouter">▶</button></div>
-        <p class="fr">Le piège français : on dit <b>I agree</b>, jamais « I am agree ».</p>
+        <div class="plan" id="l-phrases"></div>
+        <p class="fr" id="l-tip"></p>
         <button class="btn" data-step-next>J'ai répété les trois</button>
       </div>
 
       <div data-step="2" class="next" hidden>
         <span class="eyebrow">3 · À vous</span>
         <div class="brad"><div class="avatar" data-brad></div>
-          <div class="bubble brad-b"><span class="who">Brad · New York</span>Let's just cut the training budget. Nobody uses it anyway.</div></div>
+          <div class="bubble brad-b"><span class="who" id="l-char-name"></span><span id="l-char-line" lang="en"></span></div></div>
         <div class="mic"><span>●</span>Dans l'appli finale, vous répondez à voix haute. Ici, choisissez votre réplique.</div>
-        <div class="choice" id="replies">
-          <button class="opt" data-r="wrong"><span>“No, that's wrong.”</span></button>
-          <button class="opt" data-r="agree"><span>“I am not agree with you.”</span></button>
-          <button class="opt" data-r="good"><span>“I see where you're coming from, but the numbers tell a different story.”</span></button>
-        </div>
+        <div class="choice" id="replies"></div>
         <div id="verdict" hidden></div>
         <button class="btn" id="to-feedback" data-step-next hidden>Voir le bilan</button>
       </div>
@@ -344,10 +338,11 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
         <span class="eyebrow">4 · Le bilan</span>
         <div class="fb">
           <div class="card"><div><span class="k">Une chose à corriger</span><span id="fb-fix"></span></div></div>
-          <div class="card"><div><span class="k">Une chose brillante</span>Your stress on “<b>but</b>” was perfect. Brad felt that.</div></div>
+          <div class="card"><div><span class="k">Une chose brillante</span><span id="fb-good"></span></div></div>
         </div>
+        <div class="card" id="l-traps-card"><span class="k" style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Les pièges pour vous</span><div class="plan" id="l-traps" style="margin-top:6px"></div></div>
         <svg class="big-star pop" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z"/></svg>
-        <p style="text-align:center;font-weight:700">+1 étoile · Disagree politely</p>
+        <p style="text-align:center;font-weight:700" id="l-star"></p>
         <button class="btn" data-step-next>Terminer</button>
       </div>
 
@@ -355,10 +350,10 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
         <span class="eyebrow">5 · Fini</span>
         <div class="hero-alice">
           <div class="avatar big" data-alice></div>
-          <h2>You just disagreed with someone in English and nobody died.</h2>
-          <div class="bubble"><span class="who">Alice</span>Same time tomorrow? I'll bring the coffee. You bring the confidence.</div>
+          <h2 id="l-end-title" lang="en"></h2>
+          <div class="bubble"><span class="who">Alice</span><span id="l-sendoff" lang="en"></span></div>
         </div>
-        <p class="fr">3 nouvelles phrases ajoutées à votre banque.</p>
+        <p class="fr" id="l-newcount"></p>
         <button class="btn spot" id="finish">Retour à l'accueil</button>
       </div>
     </section>
@@ -471,8 +466,9 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   // Alice's lines: roast (level 5), soft, and clean variants
   const LINES=C.aliceLines;
   const CHECK=C.voiceCheckReplies;
-  const VERDICT=C.sessionVerdicts;
-  const state={roast:true,clean:false,stars:{intro:2,small:1,update:1,disagree:0},extraPhrases:0,firstWrong:null};
+  const LESSONS=C.lessons;
+  const lessonById=id=>LESSONS.find(l=>l.id===id);
+  const state={roast:true,clean:false,stars:{intro:2,small:1,update:1,disagree:0},bankExtra:[],firstWrong:null,lesson:'disagree'};
   const CHEERS=C.celebrations;
   let lastCheer=-1;
   function cheer(){ let i; do{ i=Math.floor(Math.random()*CHEERS.length); }while(CHEERS.length>1 && i===lastCheer); lastCheer=i; speak(CHEERS[i]); return `<span class="cheer pop">${CHEERS[i]}</span>`; }
@@ -488,11 +484,11 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   const FLOORS=C.floors;
   const DESC=C.starDescriptions;
   function openRoom(k){
-    const n=state.stars[k]||0, live=k==='disagree';
+    const n=state.stars[k]||0, ls=LESSONS.filter(l=>l.situation===k);
     document.getElementById('sheet-room').innerHTML=`<div class="top"><span class="eyebrow">${ROOMS[k]}</span><button class="icon-btn" data-close>Fermer</button></div>
       <h3>${TITLE[k]}</h3><span class="stars">${stars(n)}</span>
       <div class="levels"><div class="card"><span class="k">★ Survive</span>${DESC[k][0]}</div><div class="card"><span class="k">★★ Handle</span>You react to surprises and keep it going</div><div class="card"><span class="k">★★★ Own it</span>${DESC[k][1]}</div></div>
-      ${live?'<button class="btn spot" data-go="session" data-close>C\'est parti · 5 min</button>':'<button class="btn" disabled>Pas encore dans le prototype</button>'}`;
+      ${ls.length?ls.map(l=>`<button class="btn spot" data-go="session" data-lesson="${l.id}">${l.title} · 5 min</button>`).join(''):'<button class="btn" disabled>Bientôt : pas encore de leçon ici</button>'}`;
     openSheet('room');
   }
   function renderMap(){
@@ -501,12 +497,11 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     document.querySelectorAll('[data-stars]').forEach(el=>el.innerHTML=stars(state.stars[el.dataset.stars]||0));
     const total=Object.values(state.stars).reduce((a,b)=>a+b,0);
     document.getElementById('stat-stars').textContent=total;
-    document.getElementById('stat-phrases').textContent=9+state.extraPhrases;
+    document.getElementById('stat-phrases').textContent=BANK.length+state.bankExtra.length;
   }
   const BANK=C.phraseBank;
-  const NEW=C.sessionNewPhrases;
   function renderBank(){
-    const list=(state.extraPhrases?NEW:[]).concat(BANK);
+    const list=state.bankExtra.concat(BANK);
     document.getElementById('bank').innerHTML=list.map(([p,c])=>`<div class="card"><b>${p}</b><small>${c}</small></div>`).join('');
   }
 
@@ -524,6 +519,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     document.getElementById('s-'+name).scrollTop=0;
   }
   document.addEventListener('click',e=>{
+    const L=e.target.closest('[data-lesson]'); if(L) state.lesson=L.dataset.lesson;
     const g=e.target.closest('[data-go]'); if(g && !g.disabled){ go(g.dataset.go); return; }
     const sh=e.target.closest('[data-sheet]'); if(sh){ openSheet(sh.dataset.sheet); return; }
     if(e.target.closest('[data-close]')||e.target.id==='scrim'){ closeSheet(); return; }
@@ -561,41 +557,57 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     }catch(_){}
   }
 
-  // Session flow
-  let step=0;
+  // Session flow (every lesson comes from content.json > lessons)
+  let step=0, L=null;
   const steps=[...document.querySelectorAll('[data-step]')];
   function showStep(i){
     step=i; steps.forEach((s,j)=>s.hidden=(j!==i));
     document.querySelectorAll('#prog span').forEach((s,j)=>s.classList.toggle('on', j<=i));
     document.getElementById('s-session').scrollTop=0;
   }
+  const $=id=>document.getElementById(id);
   function startSession(){
+    L=lessonById(state.lesson)||LESSONS[0];
     state.firstWrong=null;
-    document.getElementById('verdict').hidden=true;
-    document.getElementById('to-feedback').hidden=true;
-    document.querySelectorAll('#replies .opt').forEach(x=>{x.setAttribute('aria-pressed','false');x.disabled=false;});
+    $('l-title').textContent=L.title;
+    $('l-hook').textContent=say(L.hook);
+    $('l-hookfr').textContent=L.hookFr;
+    $('l-phrases').innerHTML=L.phrases.map(ph=>`<div class="card phrase"><div><p>${ph.html}</p>${ph.fr?`<small class="muted">${ph.fr}</small>`:''}</div><button class="play" data-say="${ph.say.replace(/"/g,'&quot;')}" aria-label="Écouter">▶</button></div>`).join('');
+    $('l-tip').innerHTML=L.tip||'';
+    document.querySelector('#s-session [data-brad]').innerHTML=BRAD;
+    $('l-char-name').textContent=L.character.name;
+    $('l-char-line').textContent=L.character.line;
+    $('replies').innerHTML=L.replies.map((r,i)=>`<button class="opt" data-ri="${i}"><span>“${r.text}”</span></button>`).join('');
+    $('verdict').hidden=true; $('to-feedback').hidden=true;
     showStep(0);
   }
   document.querySelectorAll('[data-step-next]').forEach(b=>b.addEventListener('click',()=>showStep(step+1)));
-  document.querySelectorAll('#replies .opt').forEach(b=>b.addEventListener('click',()=>{
-    const r=b.dataset.r, v=VERDICT[r];
+  $('replies').addEventListener('click',e=>{
+    const b=e.target.closest('[data-ri]'); if(!b) return;
+    const v=L.replies[+b.dataset.ri];
     document.querySelectorAll('#replies .opt').forEach(x=>x.setAttribute('aria-pressed', x===b));
-    if(!v.good && !state.firstWrong) state.firstWrong=r;
-    const box=document.getElementById('verdict');
+    if(!v.good && state.firstWrong===null) state.firstWrong=+b.dataset.ri;
+    const box=$('verdict');
     box.className='verdict '+(v.good?'good':'bad');
     box.innerHTML=`${v.good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${say(v)}</span>`;
     box.hidden=false;
-    document.getElementById('to-feedback').hidden=!v.good;
+    $('to-feedback').hidden=!v.good;
     if(v.good){ b.disabled=true; }
-  }));
-  // feedback text depends on the first mistake
-  const fbObs=()=>{ const f=document.getElementById('fb-fix');
-    f.innerHTML = state.firstWrong==='agree' ? 'It\'s “I <b>don\'t</b> agree”, never “I am not agree”.'
-      : state.firstWrong==='wrong' ? 'Soften before you push back: “I see where you\'re coming from, <b>but</b>…”'
-      : 'Nothing to fix. Annoying, frankly. Next time, add a reason: “…because the numbers show…”'; };
-  document.getElementById('to-feedback').addEventListener('click',fbObs);
-  document.getElementById('finish').addEventListener('click',()=>{
-    state.stars.disagree=Math.max(state.stars.disagree,1); state.extraPhrases=3; renderMap(); go('home');
+  });
+  $('to-feedback').addEventListener('click',()=>{
+    $('fb-fix').innerHTML = state.firstWrong!==null ? L.replies[state.firstWrong].fix : L.noFix;
+    $('fb-good').innerHTML = L.brilliant;
+    $('l-traps').innerHTML=(L.traps||[]).map(t=>`<div><b>${t[0]}</b> → <s>${t[1]}</s> → <b>${t[2]}</b></div>`).join('');
+    $('l-traps-card').hidden=!(L.traps&&L.traps.length);
+    $('l-star').textContent='+1 étoile · '+TITLE[L.situation];
+    $('l-end-title').textContent=L.endTitle;
+    $('l-sendoff').textContent=say(L.sendoff);
+    $('l-newcount').textContent=L.newPhrases.length+' nouvelles phrases ajoutées à votre banque.';
+  });
+  $('finish').addEventListener('click',()=>{
+    state.stars[L.situation]=Math.min(3,(state.stars[L.situation]||0)+1);
+    L.newPhrases.forEach(np=>{ if(!state.bankExtra.some(x=>x[0]===np[0])) state.bankExtra.unshift(np); });
+    renderMap(); go('home');
   });
 
   // ---- Rehearse your real meeting

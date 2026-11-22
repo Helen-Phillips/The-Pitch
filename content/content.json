@@ -1,5 +1,5 @@
 {
-  "_readme": "All the words of The Pitch live here. Change any sentence between quotes and keep the quotes, commas and brackets as they are. 'roast' is Alice at level 5, 'soft' is the gentle setting, 'clean' is the no-swearing version. Where a line has an 'fr' part, that is the French translation shown underneath during the first steps. 'celebrations' are the punchy lines Alice shouts, one at random, every time the learner gets it right.",
+  "_readme": "All the words of The Pitch live here. Change any sentence between quotes and keep the quotes, commas and brackets as they are. 'roast' is Alice at level 5, 'soft' is the gentle setting, 'clean' is the no-swearing version. Where a line has an 'fr' part, that is the French translation shown underneath during the first steps. 'celebrations' are the punchy lines Alice shouts, one at random, every time the learner gets it right. Each lesson in 'lessons' follows the 5 steps: hook, three phrases, your turn (replies: good true/false), feedback (fix, brilliant, traps) and send-off. 'situation' is the room it belongs to.",
   "aliceLines": {
     "welcome": {
       "roast": "I'm Alice. I've sat through a thousand meetings so you don't have to suffer through one more in silence. Ready?",
@@ -49,23 +49,6 @@
       }
     }
   ],
-  "sessionVerdicts": {
-    "wrong": {
-      "good": false,
-      "roast": "Brilliant. Brad now hates you and the budget is still cut. Softer, darling. Try again.",
-      "soft": "A bit direct for a meeting. Try a softer way in."
-    },
-    "agree": {
-      "good": false,
-      "roast": "“I am not agree.” The whole meeting just heard the Marseillaise. It's “I don't agree”. Again.",
-      "soft": "Nearly! In English it's “I don't agree”, no “am”. Try again."
-    },
-    "good": {
-      "good": true,
-      "roast": "Oh, look at you. That sentence would get you a second meeting and someone else's parking space.",
-      "soft": "Perfect. Polite, clear and confident."
-    }
-  },
   "situations": [
     [
       "intro",
@@ -252,20 +235,6 @@
       "Remercier"
     ]
   ],
-  "sessionNewPhrases": [
-    [
-      "I see where you're coming from, but…",
-      "Disagree politely"
-    ],
-    [
-      "I'm not sure that's the best option.",
-      "Disagree politely"
-    ],
-    [
-      "Could we look at it from another angle?",
-      "Disagree politely"
-    ]
-  ],
   "rehearsePlans": {
     "defend": {
       "phrases": [
@@ -373,5 +342,219 @@
     "That's what I'm talking about!",
     "You're nailing it!",
     "Spot-on!"
+  ],
+  "lessons": [
+    {
+      "id": "disagree",
+      "situation": "disagree",
+      "title": "Disagree politely",
+      "hook": {
+        "roast": "Saying “No, that's wrong” in a meeting is how you get fewer meetings. Let's fix that.",
+        "soft": "Saying “No, that's wrong” can sound harsh in English. Let's find a smoother way."
+      },
+      "hookFr": "Aujourd'hui : être en désaccord sans claquer la porte.",
+      "phrases": [
+        {
+          "html": "I see where you're <b>com</b>ing from, <b>but</b>…",
+          "say": "I see where you're coming from, but…",
+          "fr": "Je comprends votre point de vue, mais…"
+        },
+        {
+          "html": "I'm not <b>sure</b> that's the best <b>op</b>tion.",
+          "say": "I'm not sure that's the best option.",
+          "fr": "Je ne suis pas sûr·e que ce soit la meilleure option."
+        },
+        {
+          "html": "Could we look at it from a<b>noth</b>er angle?",
+          "say": "Could we look at it from another angle?",
+          "fr": "Et si on regardait ça sous un autre angle ?"
+        }
+      ],
+      "tip": "Le piège français : on dit <b>I agree</b>, jamais « I am agree ».",
+      "character": {
+        "who": "brad",
+        "name": "Brad · New York",
+        "line": "Let's just cut the training budget. Nobody uses it anyway."
+      },
+      "replies": [
+        {
+          "text": "No, that's wrong.",
+          "good": false,
+          "roast": "Brilliant. Brad now hates you and the budget is still cut. Softer, darling. Try again.",
+          "soft": "A bit direct for a meeting. Try a softer way in.",
+          "fix": "Soften before you push back: “I see where you're coming from, <b>but</b>…”"
+        },
+        {
+          "text": "I am not agree with you.",
+          "good": false,
+          "roast": "“I am not agree.” The whole meeting just heard the Marseillaise. It's “I don't agree”. Again.",
+          "soft": "Nearly! In English it's “I don't agree”, no “am”. Try again.",
+          "fix": "It's “I <b>don't</b> agree”, never “I am not agree”."
+        },
+        {
+          "text": "I see where you're coming from, but the numbers tell a different story.",
+          "good": true,
+          "roast": "Oh, look at you. That sentence would get you a second meeting and someone else's parking space.",
+          "soft": "Perfect. Polite, clear and confident."
+        }
+      ],
+      "noFix": "Nothing to fix. Annoying, frankly. Next time, add a reason: “…because the numbers show…”",
+      "brilliant": "Your stress on “<b>but</b>” was perfect. Brad felt that.",
+      "traps": [
+        [
+          "Je suis d'accord",
+          "I am agree",
+          "I agree"
+        ],
+        [
+          "Je ne suis pas d'accord",
+          "I am not agree",
+          "I don't agree"
+        ]
+      ],
+      "endTitle": "You just disagreed with someone in English and nobody died.",
+      "sendoff": {
+        "roast": "Same time tomorrow? I'll bring the coffee. You bring the confidence.",
+        "soft": "Lovely work. See you tomorrow?"
+      },
+      "newPhrases": [
+        [
+          "I see where you're coming from, but…",
+          "Disagree politely"
+        ],
+        [
+          "I'm not sure that's the best option.",
+          "Disagree politely"
+        ],
+        [
+          "Could we look at it from another angle?",
+          "Disagree politely"
+        ]
+      ]
+    },
+    {
+      "id": "move-meeting",
+      "situation": "chair",
+      "title": "Move a meeting",
+      "hook": {
+        "roast": "Ask an English colleague to “advance the meeting” and they'll think you want to promote it. Today we move meetings like a pro.",
+        "soft": "Today: how to move a meeting in English, without the false friends."
+      },
+      "hookFr": "Aujourd'hui : avancer, reporter ou déplacer une réunion, sans faux amis.",
+      "phrases": [
+        {
+          "html": "Could we bring the meeting <b>for</b>ward to Tuesday?",
+          "say": "Could we bring the meeting forward to Tuesday?",
+          "fr": "Avancer la réunion"
+        },
+        {
+          "html": "Would it be OK to push it <b>back</b> to three o'clock?",
+          "say": "Would it be OK to push it back to three o'clock?",
+          "fr": "Reporter, décaler"
+        },
+        {
+          "html": "Shall we move it to the <b>main</b> meeting room instead?",
+          "say": "Shall we move it to the main meeting room instead?",
+          "fr": "Changer de salle (ou : « switch to Teams »)"
+        }
+      ],
+      "tip": "Pour finir, vérifiez toujours : <b>Does that still work for you?</b>",
+      "character": {
+        "who": "brad",
+        "name": "Brad · New York",
+        "line": "Hey, bad news. I'm stuck in Lyon. I have to stay here until Thursday, so we need to move Tuesday's meeting."
+      },
+      "replies": [
+        {
+          "text": "Oh no! So you rest in Lyon until Thursday?",
+          "good": false,
+          "roast": "“Rest”? Brad isn't having a nap in Lyon, darling. Rester is stay. To rest is se reposer. Brad has to stay.",
+          "soft": "Careful: “rester” is “to stay”. “To rest” means “se reposer”.",
+          "fix": "Rester = <b>to stay</b>. To rest = se reposer."
+        },
+        {
+          "text": "No problem, we can retard the meeting to Thursday.",
+          "good": false,
+          "roast": "“Retard” is an insult in English, darling. Brad is now on the phone to HR. It's “push back”.",
+          "clean": "“Retard” is a very rude word in English. Brad's eyebrows just hit the ceiling. It's “push back”.",
+          "soft": "Avoid “retard”: it's offensive in English. Say “push back”.",
+          "fix": "Reporter = <b>push it back</b>. Never “retard”."
+        },
+        {
+          "text": "Can we advance it to Monday?",
+          "good": false,
+          "roast": "“Advance” it? It's a meeting, not a soldier. It's “bring forward”. Also, Brad has to stay in Lyon until Thursday. Keep up.",
+          "soft": "Avancer = “bring forward”. And Brad can't come before Thursday.",
+          "fix": "Avancer = <b>bring it forward</b>, not “advance”."
+        },
+        {
+          "text": "No problem. Shall we push it back to Thursday at ten, and do it on Teams in case you're running late?",
+          "good": true,
+          "roast": "New time, new venue, one sentence. Brad's assistant wants your number.",
+          "soft": "Perfect: new time, new place, clear and friendly."
+        }
+      ],
+      "noFix": "Nothing to fix. Show-off. Next time, finish with “Does that still work for you?”",
+      "brilliant": "New time <b>and</b> new venue in one sentence. That's how you run a call.",
+      "traps": [
+        [
+          "Rester",
+          "to rest",
+          "to stay"
+        ],
+        [
+          "Avancer la réunion",
+          "advance the meeting",
+          "bring it forward"
+        ],
+        [
+          "Reporter, décaler",
+          "retard / delay",
+          "push it back, postpone"
+        ],
+        [
+          "La salle",
+          "the salle, the hall",
+          "the meeting room"
+        ],
+        [
+          "Jeudi 15",
+          "Thursday 15",
+          "Thursday the fifteenth"
+        ],
+        [
+          "C'est possible pour vous ?",
+          "Is it possible for you?",
+          "Does that work for you?"
+        ]
+      ],
+      "endTitle": "You just moved a meeting without moving a muscle in your face.",
+      "sendoff": {
+        "roast": "Same time tomorrow? Or shall we push it back?",
+        "soft": "Well done. See you tomorrow?"
+      },
+      "newPhrases": [
+        [
+          "Could we bring the meeting forward to Tuesday?",
+          "Move a meeting"
+        ],
+        [
+          "Would it be OK to push it back to three o'clock?",
+          "Move a meeting"
+        ],
+        [
+          "Shall we move it to the main meeting room instead?",
+          "Move a meeting"
+        ],
+        [
+          "I have to stay until Thursday.",
+          "Move a meeting"
+        ],
+        [
+          "Does that still work for you?",
+          "Move a meeting"
+        ]
+      ]
+    }
   ]
 }

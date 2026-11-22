@@ -173,6 +173,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
 .sheet{position:absolute;inset:auto 0 0 0;background:var(--screen);border-top:1px solid var(--line);border-radius:24px 24px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;gap:12px;box-shadow:0 -20px 40px -20px rgba(0,0,0,.3);z-index:5;max-height:80%;overflow:auto}
 .scrim{position:absolute;inset:0;background:rgba(8,21,23,.45);z-index:4}
 .spacer{flex:1}
+.cheer{display:block;font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05;color:var(--good);letter-spacing:-.01em}
 .tr{display:block;margin-top:8px;padding-top:8px;border-top:1px solid color-mix(in srgb, currentColor 25%, transparent);font-size:14px;font-weight:400;opacity:.85}
 .h1-fr{font-family:var(--display);font-size:20px;font-weight:700;color:var(--muted);margin-top:-6px}
 .opt .en{display:block;font-size:13px;color:var(--muted);margin-top:2px}
@@ -472,6 +473,9 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   const CHECK=C.voiceCheckReplies;
   const VERDICT=C.sessionVerdicts;
   const state={roast:true,clean:false,stars:{intro:2,small:1,update:1,disagree:0},extraPhrases:0,firstWrong:null};
+  const CHEERS=C.celebrations;
+  let lastCheer=-1;
+  function cheer(){ let i; do{ i=Math.floor(Math.random()*CHEERS.length); }while(CHEERS.length>1 && i===lastCheer); lastCheer=i; speak(CHEERS[i]); return `<span class="cheer pop">${CHEERS[i]}</span>`; }
   const say=(o)=>{ if(!state.roast) return o.soft; if(state.clean && o.clean) return o.clean; return o.roast; };
   function renderLines(){ document.querySelectorAll('[data-line]').forEach(el=>el.textContent=say(LINES[el.dataset.line]));
     document.querySelectorAll('[data-line-fr]').forEach(el=>{ const o=LINES[el.dataset.lineFr]; el.textContent=o&&o.fr?say(o.fr):''; }); }
@@ -579,7 +583,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     if(!v.good && !state.firstWrong) state.firstWrong=r;
     const box=document.getElementById('verdict');
     box.className='verdict '+(v.good?'good':'bad');
-    box.innerHTML=`<span class="lbl">${v.good?'Alice approuve':'Alice dit…'}</span><span>${say(v)}</span>`;
+    box.innerHTML=`${v.good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${say(v)}</span>`;
     box.hidden=false;
     document.getElementById('to-feedback').hidden=!v.good;
     if(v.good){ b.disabled=true; }
@@ -630,7 +634,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     const box=document.getElementById('r-verdict');
     box.className='verdict '+(good?'good':'bad');
     const nm=r.who==='boss'?'Sandrine':'Brad';
-    box.innerHTML=`<span class="lbl">${good?'Alice approuve':'Alice dit…'}</span><span>${esc((state.roast?row[2]:row[3]).replace(/Brad/g,nm))}</span>`;
+    box.innerHTML=`${good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${esc((state.roast?row[2]:row[3]).replace(/Brad/g,nm))}</span>`;
     box.hidden=false; document.getElementById('r-done').hidden=!good;
   });
 

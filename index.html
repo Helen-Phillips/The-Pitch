@@ -242,7 +242,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
       <div class="top"><span class="eyebrow">Samedi · The Pitch</span><button class="icon-btn" data-go="settings">Réglages</button></div>
       <div class="alice">
         <div class="avatar" data-alice></div>
-        <div class="bubble"><span class="who">Alice</span><span data-line="comeback"></span></div>
+        <div class="bubble"><span class="who">Alice</span><span data-line="comeback" lang="en"></span><span class="tr" data-line-fr="comeback"></span></div>
       </div>
       <button class="meeting" data-go="rehearse">
         <span><span class="eyebrow" style="color:inherit;opacity:.75">Nouveau</span><strong>Une vraie réunion bientôt ?</strong><span class="fr" style="color:inherit;opacity:.8">Répétez-la avec Alice, sur votre sujet</span></span>
@@ -299,7 +299,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
       </div>
       <div class="alice">
         <div class="avatar" data-alice></div>
-        <div class="bubble"><span class="who">Alice</span><span data-line="settings"></span></div>
+        <div class="bubble"><span class="who">Alice</span><span data-line="settings" lang="en"></span><span class="tr" data-line-fr="settings"></span></div>
       </div>
     </section>
 
@@ -311,7 +311,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
       <div data-step="0" class="next">
         <span class="eyebrow">1 · L'accroche</span>
         <div class="alice"><div class="avatar" data-alice></div>
-          <div class="bubble"><span class="who">Alice</span><span id="l-hook" lang="en"></span></div></div>
+          <div class="bubble"><span class="who">Alice</span><span id="l-hook" lang="en"></span><span class="tr" id="l-hook-fr"></span></div></div>
         <p class="fr" id="l-hookfr"></p>
         <button class="btn" data-step-next>Continuer</button>
       </div>
@@ -351,7 +351,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
         <div class="hero-alice">
           <div class="avatar big" data-alice></div>
           <h2 id="l-end-title" lang="en"></h2>
-          <div class="bubble"><span class="who">Alice</span><span id="l-sendoff" lang="en"></span></div>
+          <div class="bubble"><span class="who">Alice</span><span id="l-sendoff" lang="en"></span><span class="tr" id="l-sendoff-fr"></span></div>
         </div>
         <p class="fr" id="l-newcount"></p>
         <button class="btn spot" id="finish">Retour à l'accueil</button>
@@ -365,7 +365,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
 
       <div data-rstep="0" class="next">
         <div class="alice"><div class="avatar" data-alice></div>
-          <div class="bubble"><span class="who">Alice</span>Tell me about the meeting. I'll build your rehearsal around it, so tomorrow feels like a rerun.</div></div>
+          <div class="bubble"><span class="who">Alice</span><span lang="en">Tell me about the meeting. I'll build your rehearsal around it, so tomorrow feels like a rerun.</span><span class="tr">Parlez-moi de la réunion. Je construis votre répétition autour, pour que demain ressemble à une rediffusion.</span></div></div>
         <div class="field">
           <label for="r-topic">C'est à propos de quoi ?</label>
           <textarea id="r-topic">Budget review on Monday. I need to keep my team's training budget.</textarea>
@@ -407,7 +407,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
         <div class="hero-alice">
           <div class="avatar big" data-alice></div>
           <h2>You've already had this meeting once. Tomorrow is the rerun.</h2>
-          <div class="bubble"><span class="who">Alice</span><span id="r-bye"></span></div>
+          <div class="bubble"><span class="who">Alice</span><span id="r-bye" lang="en"></span><span class="tr" id="r-bye-fr"></span></div>
         </div>
         <div class="card"><span class="eyebrow">Vos 3 phrases pour demain</span><div class="plan" id="r-keep" style="margin-top:8px"></div></div>
         <button class="btn ghost" disabled>Après la réunion : débrief avec Alice (bientôt)</button>
@@ -429,7 +429,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
       <div class="card phrase"><p>Sorry, could you say that a<b>gain</b>?</p><button class="play" data-say="Sorry, could you say that again?" aria-label="Écouter">▶</button></div>
       <div class="card phrase"><p>Just to <b>check</b>, you mean…</p><button class="play" data-say="Just to check, you mean…" aria-label="Écouter">▶</button></div>
       <div class="card phrase"><p>Can I add something <b>here</b>?</p><button class="play" data-say="Can I add something here?" aria-label="Écouter">▶</button></div>
-      <div class="alice"><div class="avatar" data-alice></div><div class="bubble"><span class="who">Alice</span><span data-line="meeting"></span></div></div>
+      <div class="alice"><div class="avatar" data-alice></div><div class="bubble"><span class="who">Alice</span><span data-line="meeting" lang="en"></span><span class="tr" data-line-fr="meeting"></span></div></div>
     </div>
   </div>
 </div>
@@ -472,6 +472,8 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   const CHEERS=C.celebrations;
   let lastCheer=-1;
   function cheer(){ let i; do{ i=Math.floor(Math.random()*CHEERS.length); }while(CHEERS.length>1 && i===lastCheer); lastCheer=i; speak(CHEERS[i]); return `<span class="cheer pop">${CHEERS[i]}</span>`; }
+  const sayFr=(o)=>o&&o.fr?say(o.fr):'';
+  const trSpan=t=>t?`<span class="tr">${t}</span>`:'';
   const say=(o)=>{ if(!state.roast) return o.soft; if(state.clean && o.clean) return o.clean; return o.roast; };
   function renderLines(){ document.querySelectorAll('[data-line]').forEach(el=>el.textContent=say(LINES[el.dataset.line]));
     document.querySelectorAll('[data-line-fr]').forEach(el=>{ const o=LINES[el.dataset.lineFr]; el.textContent=o&&o.fr?say(o.fr):''; }); }
@@ -570,7 +572,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     L=lessonById(state.lesson)||LESSONS[0];
     state.firstWrong=null;
     $('l-title').textContent=L.title;
-    $('l-hook').textContent=say(L.hook);
+    $('l-hook').textContent=say(L.hook); $('l-hook-fr').textContent=sayFr(L.hook);
     $('l-hookfr').textContent=L.hookFr;
     $('l-phrases').innerHTML=L.phrases.map(ph=>`<div class="card phrase"><div><p>${ph.html}</p>${ph.fr?`<small class="muted">${ph.fr}</small>`:''}</div><button class="play" data-say="${ph.say.replace(/"/g,'&quot;')}" aria-label="Écouter">▶</button></div>`).join('');
     $('l-tip').innerHTML=L.tip||'';
@@ -589,7 +591,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     if(!v.good && state.firstWrong===null) state.firstWrong=+b.dataset.ri;
     const box=$('verdict');
     box.className='verdict '+(v.good?'good':'bad');
-    box.innerHTML=`${v.good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${say(v)}</span>`;
+    box.innerHTML=`${v.good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${say(v)}</span>${trSpan(sayFr(v))}`;
     box.hidden=false;
     $('to-feedback').hidden=!v.good;
     if(v.good){ b.disabled=true; }
@@ -601,7 +603,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     $('l-traps-card').hidden=!(L.traps&&L.traps.length);
     $('l-star').textContent='+1 étoile · '+TITLE[L.situation];
     $('l-end-title').textContent=L.endTitle;
-    $('l-sendoff').textContent=say(L.sendoff);
+    $('l-sendoff').textContent=say(L.sendoff); $('l-sendoff-fr').textContent=sayFr(L.sendoff);
     $('l-newcount').textContent=L.newPhrases.length+' nouvelles phrases ajoutées à votre banque.';
   });
   $('finish').addEventListener('click',()=>{
@@ -636,6 +638,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     document.getElementById('r-replies').innerHTML=P.replies.map(([k,t])=>`<button class="opt" data-rr="${k}"><span>“${esc(t)}”</span></button>`).join('');
     document.getElementById('r-verdict').hidden=true; document.getElementById('r-done').hidden=true;
     document.getElementById('r-bye').textContent= state.roast ? `Go get them. And if ${r.who==='boss'?'Sandrine goes vague':'Brad interrupts'}, you know what to say. Text me after, I want details.` : "You're ready. Tell me how it went afterwards.";
+    document.getElementById('r-bye-fr').textContent= state.roast ? `Allez-y. Et si ${r.who==='boss'?'Sandrine reste floue':'Brad vous coupe la parole'}, vous savez quoi dire. Écrivez-moi après, je veux tous les détails.` : "Vous êtes prêt·e. Racontez-moi comment ça s'est passé.";
     rShow(1);
   });
   document.querySelectorAll('[data-rnext]').forEach(b=>b.addEventListener('click',()=>rShow(r.step+1)));
@@ -646,7 +649,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     const box=document.getElementById('r-verdict');
     box.className='verdict '+(good?'good':'bad');
     const nm=r.who==='boss'?'Sandrine':'Brad';
-    box.innerHTML=`${good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${esc((state.roast?row[2]:row[3]).replace(/Brad/g,nm))}</span>`;
+    box.innerHTML=`${good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${esc((state.roast?row[2]:row[3]).replace(/Brad/g,nm))}</span>${row[4]?trSpan(esc((state.roast?row[4]:row[5]).replace(/Brad/g,nm))):''}`;
     box.hidden=false; document.getElementById('r-done').hidden=!good;
   });
 

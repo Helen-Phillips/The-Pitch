@@ -1,5 +1,5 @@
 {
-  "_readme": "All the words of The Pitch live here. Change any sentence between quotes and keep the quotes, commas and brackets as they are. 'roast' is Alice at level 5, 'soft' is the gentle setting, 'clean' is the no-swearing version. Where a line has an 'fr' part, that is the French translation shown underneath during the first steps.",
+  "_readme": "All the words of The Pitch live here. Change any sentence between quotes and keep the quotes, commas and brackets as they are. 'roast' is Alice at level 5, 'soft' is the gentle setting, 'clean' is the no-swearing version. Where a line has an 'fr' part, that is the French translation shown underneath during the first steps. 'celebrations' are the punchy lines Alice shouts, one at random, every time the learner gets it right.",
   "aliceLines": {
     "welcome": {
       "roast": "I'm Alice. I've sat through a thousand meetings so you don't have to suffer through one more in silence. Ready?",
@@ -368,5 +368,10 @@
     "boss": {
       "name": "Sandrine · la cheffe"
     }
-  }
+  },
+  "celebrations": [
+    "That's what I'm talking about!",
+    "You're nailing it!",
+    "Spot-on!"
+  ]
 }

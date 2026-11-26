@@ -328,6 +328,7 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
         <span class="eyebrow">3 · À vous</span>
         <div class="brad"><div class="avatar" data-brad></div>
           <div class="bubble brad-b"><span class="who" id="l-char-name"></span><span id="l-char-line" lang="en"></span></div></div>
+        <p class="note" id="l-char-note" hidden></p>
         <div class="mic"><span>●</span>Dans l'appli finale, vous répondez à voix haute. Ici, choisissez votre réplique.</div>
         <div class="choice" id="replies"></div>
         <div id="verdict" hidden></div>
@@ -576,7 +577,9 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     $('l-hookfr').textContent=L.hookFr;
     $('l-phrases').innerHTML=L.phrases.map(ph=>`<div class="card phrase"><div><p>${ph.html}</p>${ph.fr?`<small class="muted">${ph.fr}</small>`:''}</div><button class="play" data-say="${ph.say.replace(/"/g,'&quot;')}" aria-label="Écouter">▶</button></div>`).join('');
     $('l-tip').innerHTML=L.tip||'';
-    document.querySelector('#s-session [data-brad]').innerHTML=BRAD;
+    const who=L.character.who, face=who==='gary'?BRAD.replace('#9FC3E7','#F3B27A').replace('#D9A441','#5A3B26').replace('#3B4A6B','#E9C23B').replace('aria-label="Brad"','aria-label="Gary"'):BRAD;
+    document.querySelector('#s-session [data-brad]').innerHTML=face;
+    const cn=$('l-char-note'); cn.textContent=L.character.note||''; cn.hidden=!L.character.note;
     $('l-char-name').textContent=L.character.name;
     $('l-char-line').textContent=L.character.line;
     $('replies').innerHTML=L.replies.map((r,i)=>`<button class="opt" data-ri="${i}"><span>“${r.text}”</span></button>`).join('');

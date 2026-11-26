@@ -110,6 +110,10 @@
     [
       "network",
       "Network at an event"
+    ],
+    [
+      "deliver",
+      "Deal with deliveries"
     ]
   ],
   "rooms": {
@@ -124,7 +128,8 @@
     "chair": "Call room",
     "present": "Boardroom",
     "nego": "Deal room",
-    "hard": "The hot seat"
+    "hard": "The hot seat",
+    "deliver": "Deliveries room"
   },
   "floors": [
     [
@@ -156,7 +161,8 @@
       [
         "intro",
         "small",
-        "network"
+        "network",
+        "deliver"
       ]
     ]
   ],
@@ -208,6 +214,10 @@
     "network": [
       "Introduce yourself",
       "Make a contact who calls you back"
+    ],
+    "deliver": [
+      "Check it before you sign",
+      "Spot the problem and get it on paper, politely"
     ]
   },
   "phraseBank": [
@@ -629,6 +639,159 @@
         [
           "Does that still work for you?",
           "Move a meeting"
+        ]
+      ]
+    },
+    {
+      "id": "take-delivery",
+      "situation": "deliver",
+      "title": "Take a delivery",
+      "hook": {
+        "roast": "A driver in a hurry, a pen in your face, and “just sign here, love”. Sign without checking and those crushed boxes are now your problem. Today you check first, in English.",
+        "soft": "Today: how to take a delivery in English, and check it before you sign.",
+        "fr": {
+          "roast": "Un livreur pressé, un stylo sous le nez et « signez là ». Signez sans vérifier, et les cartons écrasés deviennent votre problème. Aujourd'hui, on vérifie d'abord, en anglais.",
+          "soft": "Aujourd'hui : recevoir une livraison en anglais, et vérifier avant de signer."
+        }
+      },
+      "hookFr": "Aujourd'hui : recevoir une livraison, vérifier, et signer avec réserves.",
+      "phrases": [
+        {
+          "html": "Could you bring it round to the loading <b>bay</b>?",
+          "say": "Could you bring it round to the loading bay?",
+          "fr": "Pouvez-vous passer par le quai de livraison ?"
+        },
+        {
+          "html": "Hang on, I'll just <b>check</b> it before I sign.",
+          "say": "Hang on, I'll just check it before I sign.",
+          "fr": "Attendez, je vérifie avant de signer."
+        },
+        {
+          "html": "I'm signing for it as <b>dam</b>aged.",
+          "say": "I'm signing for it as damaged.",
+          "fr": "Je signe avec réserves (colis abîmé)."
+        }
+      ],
+      "tip": "Bonus : <b>We were expecting twelve, but there are only ten. Can you note that on the delivery note?</b>",
+      "character": {
+        "who": "gary",
+        "name": "Gary · le livreur",
+        "line": "Alright? Delivery for The Pitch. Twelve boxes. Sign here, would you? I'm on a double yellow.",
+        "note": "Vous comptez dix cartons, et l'un d'eux est écrasé."
+      },
+      "replies": [
+        {
+          "text": "OK, I sign.",
+          "good": false,
+          "roast": "Congratulations. You just signed for twelve boxes you didn't get and one you can't use. Gary's gone. So is your refund.",
+          "soft": "Careful: never sign before you check. Two boxes are missing and one is damaged.",
+          "fix": "Check first: <b>Hang on, I'll just check it before I sign.</b>",
+          "fr": {
+            "roast": "Félicitations. Vous venez de signer pour douze cartons que vous n'avez pas reçus, dont un inutilisable. Gary est parti. Votre remboursement aussi.",
+            "soft": "Attention : ne signez jamais avant de vérifier. Il manque deux cartons et un est abîmé."
+          }
+        },
+        {
+          "text": "Wait, I must control the goods.",
+          "good": false,
+          "roast": "Control them? They're boxes, not toddlers. It's “check the goods”. Gary thinks you're about to arrest the parcels.",
+          "soft": "Contrôler = “check”. Say “I'll just check the goods”.",
+          "fix": "Contrôler la marchandise = <b>check the goods</b>.",
+          "fr": {
+            "roast": "Les contrôler ? Ce sont des cartons, pas des enfants. On dit « check the goods ». Gary croit que vous allez arrêter les colis.",
+            "soft": "Contrôler = « check ». Dites « I'll just check the goods »."
+          }
+        },
+        {
+          "text": "I sign with reserves, this colis is broken.",
+          "good": false,
+          "roast": "Reserves? Gary thinks you're booking a table for two. You “sign for it as damaged”. And a colis is a parcel or a box.",
+          "soft": "Signer avec réserves = “sign for it as damaged”. Un colis = “a parcel” or “a box”.",
+          "fix": "Signer avec réserves = <b>sign for it as damaged</b>. Colis = <b>parcel, box</b>.",
+          "fr": {
+            "roast": "Des réserves ? Gary croit que vous réservez une table pour deux. On dit « sign for it as damaged ». Et un colis, c'est « a parcel » ou « a box ».",
+            "soft": "Signer avec réserves = « sign for it as damaged ». Un colis = « a parcel » ou « a box »."
+          }
+        },
+        {
+          "text": "Hang on, I'll just check it first. There are only ten boxes, not twelve, and this one's damaged, so I'm signing for it as damaged. Can you note that on the delivery note?",
+          "good": true,
+          "roast": "Polite, firm, and Gary's double yellow is not your problem. Accounts will build you a statue.",
+          "soft": "Perfect: you checked, you named the problem, and you got it on paper.",
+          "fr": {
+            "roast": "Poli, ferme, et la place interdite de Gary n'est pas votre problème. La compta va vous élever une statue.",
+            "soft": "Parfait : vous avez vérifié, nommé le problème, et tout est écrit."
+          }
+        }
+      ],
+      "noFix": "Nothing to fix. Gary is impressed and slightly scared.",
+      "brilliant": "You checked, you counted, and you got it <b>on the delivery note</b>. That's how you take a delivery.",
+      "traps": [
+        [
+          "Contrôler la marchandise",
+          "control the goods",
+          "check the goods"
+        ],
+        [
+          "Signer avec réserves",
+          "sign with reserves",
+          "sign for it as damaged"
+        ],
+        [
+          "Le bon de livraison",
+          "the good of delivery",
+          "the delivery note"
+        ],
+        [
+          "Le colis",
+          "the colis",
+          "the parcel, the box"
+        ],
+        [
+          "Abîmé",
+          "broken (only if it's in pieces)",
+          "damaged, squashed, dented"
+        ],
+        [
+          "Le quai",
+          "the quay (that's for boats)",
+          "the loading bay"
+        ],
+        [
+          "Une palette",
+          "a palette (that's for painters)",
+          "a pallet"
+        ]
+      ],
+      "endTitle": "You just stopped a man on a double yellow from rushing you.",
+      "sendoff": {
+        "roast": "Honestly? That's leadership. Same time tomorrow.",
+        "soft": "Well done. See you tomorrow?",
+        "fr": {
+          "roast": "Franchement ? C'est ça, le leadership. À demain, même heure.",
+          "soft": "Bravo. À demain ?"
+        }
+      },
+      "newPhrases": [
+        [
+          "Hang on, I'll just check it before I sign.",
+          "Take a delivery"
+        ],
+        [
+          "I'm signing for it as damaged.",
+          "Take a delivery"
+        ],
+        [
+          "Can you note that on the delivery note?",
+          "Take a delivery"
+        ],
+        [
+          "Could you bring it round to the loading bay?",
+          "Take a delivery"
+        ],
+        [
+          "We were expecting twelve, but there are only ten.",
+          "Take a delivery"
         ]
       ]
     }

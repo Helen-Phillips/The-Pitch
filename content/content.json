@@ -794,6 +794,437 @@
           "Take a delivery"
         ]
       ]
+    },
+    {
+      "id": "wrong-site",
+      "situation": "deliver",
+      "title": "Wrong site, wrong pallets",
+      "hook": {
+        "roast": "The pallets are off the lorry, they're in your car park, and they're not even yours. Today you say no to a man with a forklift, nicely.",
+        "soft": "Today: a delivery has arrived at the wrong site. You say no, politely.",
+        "fr": {
+          "roast": "Les palettes sont déchargées, elles sont sur votre parking, et elles ne sont même pas à vous. Aujourd'hui, vous dites non à un homme avec un chariot élévateur, poliment.",
+          "soft": "Aujourd'hui : une livraison arrive sur le mauvais site. Vous dites non, poliment."
+        }
+      },
+      "hookFr": "Le bon de livraison indique Castres. Vous êtes à Mazamet.",
+      "character": {
+        "who": "gary",
+        "name": "Gary · le livreur",
+        "note": "Le bon de livraison indique Castres. Vous êtes à Mazamet."
+      },
+      "traps": [
+        [
+          "Recharger",
+          "recharge (that's for batteries)",
+          "reload, load it back on"
+        ],
+        [
+          "Décharger",
+          "discharge",
+          "unload"
+        ],
+        [
+          "Une faute, une erreur",
+          "a fault",
+          "a mistake: “there's been a mistake”"
+        ],
+        [
+          "Ce n'est pas mon problème",
+          "it's not my problem (sounds rude)",
+          "I'm afraid I can't accept it"
+        ],
+        [
+          "C'est obligatoire",
+          "it's obligatory (sounds like a fine)",
+          "I'm going to have to ask you to…"
+        ],
+        [
+          "Vous auriez dû vérifier",
+          "you should have checked (a telling-off)",
+          "it might save you time next time if we…"
+        ],
+        [
+          "La commande",
+          "the command",
+          "the order"
+        ],
+        [
+          "Le chauffeur",
+          "the chauffeur (that's for limousines)",
+          "the driver"
+        ]
+      ],
+      "levels": [
+        {
+          "name": "Survive",
+          "phrases": [
+            {
+              "html": "I'm afraid this delivery is for our <b>Cas</b>tres site.",
+              "say": "I'm afraid this delivery is for our Castres site.",
+              "fr": "Je crains que cette livraison soit pour notre site de Castres."
+            },
+            {
+              "html": "I can't <b>sign</b> for it, I'm afraid.",
+              "say": "I can't sign for it, I'm afraid.",
+              "fr": "Je ne peux pas signer."
+            },
+            {
+              "html": "Could you load it back <b>on</b>, please?",
+              "say": "Could you load it back on, please?",
+              "fr": "Pouvez-vous la recharger ?"
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Right, that's six pallets off. Sign here, love. I've got four more drops before lunch.",
+              "replies": [
+                {
+                  "text": "OK, leave them here, we will manage.",
+                  "good": false,
+                  "roast": "Lovely. Six pallets of someone else's stuff in your car park, and you just volunteered to drive them to Castres. Hope you like forklifts.",
+                  "soft": "Careful: if you keep them, getting them to Castres becomes your job.",
+                  "fr": {
+                    "roast": "Parfait. Six palettes qui ne sont pas à vous sur votre parking, et vous venez de vous porter volontaire pour les livrer à Castres. J'espère que vous aimez les chariots élévateurs.",
+                    "soft": "Attention : si vous les gardez, les livrer à Castres devient votre travail."
+                  },
+                  "fix": "Don't keep them: <b>Could you load it back on, please?</b>"
+                },
+                {
+                  "text": "You must recharge the pallets.",
+                  "good": false,
+                  "roast": "Recharge them? They're pallets, not phones. It's “load them back on”, or “reload” them.",
+                  "soft": "Recharger = “reload” or “load them back on”. “Recharge” is for batteries.",
+                  "fr": {
+                    "roast": "Les recharger ? Ce sont des palettes, pas des téléphones. On dit « load them back on » ou « reload » them.",
+                    "soft": "Recharger = « reload » ou « load them back on ». « Recharge », c'est pour les batteries."
+                  },
+                  "fix": "Recharger = <b>reload, load it back on</b>."
+                },
+                {
+                  "text": "Sorry, this delivery is for our Castres site, so I can't sign for it. Could you load it back on, please?",
+                  "good": true,
+                  "roast": "Clear, polite, and no signature. You survived Gary.",
+                  "soft": "Perfect: clear, polite, and no signature.",
+                  "fr": {
+                    "roast": "Clair, poli, et sans signature. Vous avez survécu à Gary.",
+                    "soft": "Parfait : clair, poli, et sans signature."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Next level, Gary argues back.",
+          "brilliant": "You said no <b>without</b> signing and without a fight.",
+          "endTitle": "You said no to a man with a forklift.",
+          "sendoff": {
+            "roast": "Next time, he argues back.",
+            "soft": "Well done. Next level: Gary argues back.",
+            "fr": {
+              "roast": "La prochaine fois, il répond.",
+              "soft": "Bravo. Niveau suivant : Gary répond."
+            }
+          },
+          "newPhrases": [
+            [
+              "I'm afraid this delivery is for our other site.",
+              "Wrong site"
+            ],
+            [
+              "I can't sign for it, I'm afraid.",
+              "Wrong site"
+            ],
+            [
+              "Could you load it back on, please?",
+              "Wrong site"
+            ]
+          ]
+        },
+        {
+          "name": "Handle",
+          "phrases": [
+            {
+              "html": "I completely under<b>stand</b>, but…",
+              "say": "I completely understand, but…",
+              "fr": "Je comprends tout à fait, mais…"
+            },
+            {
+              "html": "If I sign, they're <b>ours</b>, and they're not.",
+              "say": "If I sign, they're ours, and they're not.",
+              "fr": "Si je signe, elles sont à nous, et ce n'est pas le cas."
+            },
+            {
+              "html": "I'm going to have to ask you to load them back <b>on</b>.",
+              "say": "I'm going to have to ask you to load them back on.",
+              "fr": "Je vais devoir vous demander de les recharger."
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Right, that's six pallets off. Sign here, love. I've got four more drops before lunch.",
+              "replies": [
+                {
+                  "text": "It's not my problem, you made a fault.",
+                  "good": false,
+                  "roast": "A fault? Gary isn't playing tennis. It's “there's been a mistake”. And “not my problem” just made Gary park his lorry across your entrance.",
+                  "soft": "Say “there's been a mistake”, not “a fault”. And “not my problem” sounds rude.",
+                  "fr": {
+                    "roast": "Une faute ? Gary ne joue pas au tennis. On dit « there's been a mistake ». Et « not my problem » vient de pousser Gary à garer son camion devant votre entrée.",
+                    "soft": "Dites « there's been a mistake », pas « a fault ». Et « not my problem » sonne impoli."
+                  },
+                  "fix": "Une erreur = <b>a mistake</b>: “there's been a mistake”. Never “it's not my problem”."
+                },
+                {
+                  "text": "OK, I sign, but it's not correct.",
+                  "good": false,
+                  "roast": "Once you sign, they're yours. “But it's not correct” won't help you in front of Accounts.",
+                  "soft": "Careful: once you sign, the goods are yours. Don't sign for the wrong delivery.",
+                  "fr": {
+                    "roast": "Une fois signé, elles sont à vous. « But it's not correct » ne vous sauvera pas face à la compta.",
+                    "soft": "Attention : une fois signé, la marchandise est à vous. Ne signez pas une mauvaise livraison."
+                  },
+                  "fix": "Don't sign: <b>I can't sign for it, I'm afraid.</b>"
+                },
+                {
+                  "text": "I'm sorry, I know you're busy, but this is for our Castres site, so I can't sign for it.",
+                  "good": true,
+                  "roast": "Sympathy first, then the facts. Brace yourself, he's not done.",
+                  "soft": "Good: sympathy first, then the facts. He's going to push back.",
+                  "fr": {
+                    "roast": "D'abord de l'empathie, ensuite les faits. Accrochez-vous, il n'a pas fini.",
+                    "soft": "Bien : l'empathie d'abord, puis les faits. Il va insister."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "I'm not reloading that lot, love. Took me twenty minutes to get it off. Just sign and your lot can sort it out.",
+              "replies": [
+                {
+                  "text": "OK, no problem.",
+                  "good": false,
+                  "roast": "Gary pushed once and you folded like a deckchair. Hold your ground.",
+                  "soft": "Don't give in at the first push. Hold your ground, politely.",
+                  "fr": {
+                    "roast": "Gary a poussé une fois et vous vous êtes plié comme une chaise longue. Tenez bon.",
+                    "soft": "Ne cédez pas à la première objection. Tenez bon, poliment."
+                  },
+                  "fix": "Hold your ground: <b>I completely understand, but…</b>"
+                },
+                {
+                  "text": "You must! It's obligatory!",
+                  "good": false,
+                  "roast": "Obligatory? You sound like a parking fine. And shouting makes Gary slower, not faster.",
+                  "soft": "“Obligatory” sounds harsh. Try “I'm going to have to ask you to…”.",
+                  "fr": {
+                    "roast": "Obligatoire ? On dirait une amende de stationnement. Et crier rend Gary plus lent, pas plus rapide.",
+                    "soft": "« Obligatory » sonne dur. Essayez « I'm going to have to ask you to… »."
+                  },
+                  "fix": "C'est obligatoire = <b>I'm going to have to ask you to…</b>"
+                },
+                {
+                  "text": "I completely understand, and I'm sorry about the extra work. But if I sign, they're ours, and they're not. I'm going to have to ask you to load them back on.",
+                  "good": true,
+                  "roast": "Sympathy, reason, request. Gary sighs, but the forklift's moving.",
+                  "soft": "Perfect: sympathy, a reason, then a clear request.",
+                  "fr": {
+                    "roast": "Empathie, raison, demande. Gary soupire, mais le chariot avance.",
+                    "soft": "Parfait : de l'empathie, une raison, puis une demande claire."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Gary sighed, you didn't budge.",
+          "brilliant": "Sympathy, a <b>reason</b>, then the request. That's how you hold your ground.",
+          "endTitle": "He pushed, you didn't budge, and nobody shouted.",
+          "sendoff": {
+            "roast": "Ready for the boss level?",
+            "soft": "Well done. Ready for level 3?",
+            "fr": {
+              "roast": "Prêt pour le niveau final ?",
+              "soft": "Bravo. Prêt pour le niveau 3 ?"
+            }
+          },
+          "newPhrases": [
+            [
+              "I completely understand, but…",
+              "Wrong site"
+            ],
+            [
+              "If I sign, they're ours, and they're not.",
+              "Wrong site"
+            ],
+            [
+              "I'm going to have to ask you to load them back on.",
+              "Wrong site"
+            ]
+          ]
+        },
+        {
+          "name": "Own it",
+          "phrases": [
+            {
+              "html": "You may well be <b>right</b> about that, but…",
+              "say": "You may well be right about that, but…",
+              "fr": "Vous avez peut-être raison, mais…"
+            },
+            {
+              "html": "Shall we call your <b>of</b>fice together?",
+              "say": "Shall we call your office together?",
+              "fr": "On appelle votre bureau ensemble ?"
+            },
+            {
+              "html": "It might save you <b>time</b> next time if we…",
+              "say": "It might save you time next time if we…",
+              "fr": "Cela vous ferait peut-être gagner du temps la prochaine fois si on…"
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Right, that's six pallets off. Sign here, love. I've got four more drops before lunch.",
+              "replies": [
+                {
+                  "text": "It's not my problem, you made a fault.",
+                  "good": false,
+                  "roast": "A fault? Gary isn't playing tennis. It's “there's been a mistake”. And “not my problem” just made Gary park his lorry across your entrance.",
+                  "soft": "Say “there's been a mistake”, not “a fault”. And “not my problem” sounds rude.",
+                  "fr": {
+                    "roast": "Une faute ? Gary ne joue pas au tennis. On dit « there's been a mistake ». Et « not my problem » vient de pousser Gary à garer son camion devant votre entrée.",
+                    "soft": "Dites « there's been a mistake », pas « a fault ». Et « not my problem » sonne impoli."
+                  },
+                  "fix": "Une erreur = <b>a mistake</b>: “there's been a mistake”. Never “it's not my problem”."
+                },
+                {
+                  "text": "OK, I sign, but it's not correct.",
+                  "good": false,
+                  "roast": "Once you sign, they're yours. “But it's not correct” won't help you in front of Accounts.",
+                  "soft": "Careful: once you sign, the goods are yours. Don't sign for the wrong delivery.",
+                  "fr": {
+                    "roast": "Une fois signé, elles sont à vous. « But it's not correct » ne vous sauvera pas face à la compta.",
+                    "soft": "Attention : une fois signé, la marchandise est à vous. Ne signez pas une mauvaise livraison."
+                  },
+                  "fix": "Don't sign: <b>I can't sign for it, I'm afraid.</b>"
+                },
+                {
+                  "text": "I'm sorry, I know you're busy, but this is for our Castres site, so I can't sign for it.",
+                  "good": true,
+                  "roast": "Sympathy first, then the facts. Brace yourself, he's not done.",
+                  "soft": "Good: sympathy first, then the facts. He's going to push back.",
+                  "fr": {
+                    "roast": "D'abord de l'empathie, ensuite les faits. Accrochez-vous, il n'a pas fini.",
+                    "soft": "Bien : l'empathie d'abord, puis les faits. Il va insister."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Look, it's your lot who gave us the address. Not my fault. Just sign and ring your office.",
+              "replies": [
+                {
+                  "text": "No, it's your fault, you didn't check.",
+                  "good": false,
+                  "roast": "Maybe true, and now Gary's parked across your gate out of spite. Being right isn't the same as winning.",
+                  "soft": "Blaming him makes things worse. Agree with what's true, then hold your line.",
+                  "fr": {
+                    "roast": "C'est peut-être vrai, et maintenant Gary bloque votre portail par dépit. Avoir raison, ce n'est pas gagner.",
+                    "soft": "Le blâmer aggrave les choses. Admettez ce qui est vrai, puis tenez bon."
+                  },
+                  "fix": "Don't blame: <b>You may well be right about that, but…</b>"
+                },
+                {
+                  "text": "Yes, you're right, sorry, I'll sign.",
+                  "good": false,
+                  "roast": "He blamed you and you apologised for existing. Nope.",
+                  "soft": "Don't apologise and give in. You can agree with part of it and still not sign.",
+                  "fr": {
+                    "roast": "Il vous a accusé et vous vous êtes excusé d'exister. Non.",
+                    "soft": "Ne vous excusez pas en cédant. Vous pouvez lui donner en partie raison sans signer."
+                  },
+                  "fix": "Agree in part, then hold firm: <b>…but I can't sign for goods that aren't ours.</b>"
+                },
+                {
+                  "text": "You may well be right about the address, and I'll check that with our office. But I can't sign for goods that aren't ours. Shall we call your office now and sort it out together?",
+                  "good": true,
+                  "roast": "Agree with the part that's true, hold the line on the rest, offer a solution. That's objection handling, darling.",
+                  "soft": "Perfect: you agreed with what's true, held firm, and offered a solution.",
+                  "fr": {
+                    "roast": "Admettre ce qui est vrai, tenir bon sur le reste, proposer une solution. Ça, c'est gérer une objection.",
+                    "soft": "Parfait : vous avez admis ce qui est vrai, tenu bon et proposé une solution."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Right, the office says reload and take it to Castres. That's my whole morning gone.",
+              "note": "Après l'appel. Gary n'est pas content.",
+              "replies": [
+                {
+                  "text": "Next time, read the delivery note before you unload.",
+                  "good": false,
+                  "roast": "Correct, and he'll remember it forever. As a reason to deliver your stuff last.",
+                  "soft": "True, but it sounds like a telling-off. Try “It might save you time next time if we…”.",
+                  "fr": {
+                    "roast": "Exact, et il s'en souviendra toute sa vie. Comme raison de vous livrer en dernier.",
+                    "soft": "Vrai, mais ça sonne comme un reproche. Essayez « It might save you time next time if we… »."
+                  },
+                  "fix": "Vous auriez dû… = <b>It might save you time next time if we…</b>"
+                },
+                {
+                  "text": "Sorry, sorry, it's all our fault.",
+                  "good": false,
+                  "roast": "It isn't, and now everyone thinks it is. Be positive but don't grovel.",
+                  "soft": "It wasn't your fault. Stay positive without over-apologising.",
+                  "fr": {
+                    "roast": "Ce n'est pas le cas, et maintenant tout le monde le croit. Soyez positif, mais ne rampez pas.",
+                    "soft": "Ce n'était pas votre faute. Restez positif sans trop vous excuser."
+                  },
+                  "fix": "Thank him instead: <b>Thanks so much for sorting it.</b>"
+                },
+                {
+                  "text": "Thanks so much for sorting it, Gary, I really appreciate it. It might save you time next time if we check the site name together before you unload. Have a good rest of the day.",
+                  "good": true,
+                  "roast": "You just told a man he got it wrong, and he thanked you for it. That's owning the room. Or the car park.",
+                  "soft": "Perfect: thanks first, then tactful feedback in positive language.",
+                  "fr": {
+                    "roast": "Vous venez de dire à un homme qu'il s'est trompé, et il vous a remercié. Ça, c'est maîtriser la salle. Ou le parking.",
+                    "soft": "Parfait : d'abord un merci, puis un retour plein de tact, en langage positif."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Gary will deliver to you first from now on.",
+          "brilliant": "You gave feedback in <b>positive language</b>: “It might save you time next time if we…”.",
+          "endTitle": "You sent six pallets back to Castres and Gary still likes you.",
+          "sendoff": {
+            "roast": "See you tomorrow.",
+            "soft": "Brilliant work. See you tomorrow.",
+            "fr": {
+              "roast": "À demain.",
+              "soft": "Excellent travail. À demain."
+            }
+          },
+          "newPhrases": [
+            [
+              "You may well be right about that, but…",
+              "Wrong site"
+            ],
+            [
+              "Shall we call your office together?",
+              "Wrong site"
+            ],
+            [
+              "It might save you time next time if we…",
+              "Wrong site"
+            ],
+            [
+              "Thanks so much for sorting it, I really appreciate it.",
+              "Wrong site"
+            ]
+          ]
+        }
+      ]
     }
   ]
 }

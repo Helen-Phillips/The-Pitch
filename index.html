@@ -133,6 +133,10 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
 .door{width:56px;height:34px;border-radius:6px 6px 0 0;background:var(--spot);opacity:.9}
 .pavement{height:8px;background:var(--muted);opacity:.4;border-radius:0 0 4px 4px;margin:0 -12px}
 .levels{display:flex;flex-direction:column;gap:8px}
+.lvl-group{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.lvl-group h4{margin:6px 0 0;font-size:15px}
+.lvl-btn{display:flex;justify-content:space-between;align-items:center;text-align:left}
+.lvl-btn small{font-weight:500;opacity:.8}
 .levels .card{padding:12px 14px}
 .levels .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
 /* Session */
@@ -325,13 +329,14 @@ button:focus-visible{outline:3px solid var(--spot);outline-offset:2px}
       </div>
 
       <div data-step="2" class="next" hidden>
-        <span class="eyebrow">3 · À vous</span>
+        <span class="eyebrow" id="l-turn">3 · À vous</span>
         <div class="brad"><div class="avatar" data-brad></div>
           <div class="bubble brad-b"><span class="who" id="l-char-name"></span><span id="l-char-line" lang="en"></span></div></div>
         <p class="note" id="l-char-note" hidden></p>
         <div class="mic"><span>●</span>Dans l'appli finale, vous répondez à voix haute. Ici, choisissez votre réplique.</div>
         <div class="choice" id="replies"></div>
         <div id="verdict" hidden></div>
+        <button class="btn" id="next-ex" hidden>Gary répond… →</button>
         <button class="btn" id="to-feedback" data-step-next hidden>Voir le bilan</button>
       </div>
 
@@ -469,7 +474,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
   const CHECK=C.voiceCheckReplies;
   const LESSONS=C.lessons;
   const lessonById=id=>LESSONS.find(l=>l.id===id);
-  const state={roast:true,clean:false,stars:{intro:2,small:1,update:1,disagree:0},bankExtra:[],firstWrong:null,lesson:'disagree'};
+  const state={roast:true,clean:false,stars:{intro:2,small:1,update:1,disagree:0},bankExtra:[],firstWrong:null,lesson:'disagree',level:0};
   const CHEERS=C.celebrations;
   let lastCheer=-1;
   function cheer(){ let i; do{ i=Math.floor(Math.random()*CHEERS.length); }while(CHEERS.length>1 && i===lastCheer); lastCheer=i; speak(CHEERS[i]); return `<span class="cheer pop">${CHEERS[i]}</span>`; }
@@ -491,7 +496,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     document.getElementById('sheet-room').innerHTML=`<div class="top"><span class="eyebrow">${ROOMS[k]}</span><button class="icon-btn" data-close>Fermer</button></div>
       <h3>${TITLE[k]}</h3><span class="stars">${stars(n)}</span>
       <div class="levels"><div class="card"><span class="k">★ Survive</span>${DESC[k][0]}</div><div class="card"><span class="k">★★ Handle</span>You react to surprises and keep it going</div><div class="card"><span class="k">★★★ Own it</span>${DESC[k][1]}</div></div>
-      ${ls.length?ls.map(l=>`<button class="btn spot" data-go="session" data-lesson="${l.id}">${l.title} · 5 min</button>`).join(''):'<button class="btn" disabled>Bientôt : pas encore de leçon ici</button>'}`;
+      ${ls.length?ls.map(l=>l.levels?`<div class="lvl-group"><h4>${l.title}</h4>${l.levels.map((lv,i)=>`<button class="btn lvl-btn${i===Math.min(n,2)?' spot':''}" data-go="session" data-lesson="${l.id}" data-level="${i}"><span>${'★'.repeat(i+1)} ${lv.name}</span><small>${lv.exchanges.length} échange${lv.exchanges.length>1?'s':''}</small></button>`).join('')}</div>`:`<button class="btn spot" data-go="session" data-lesson="${l.id}" data-level="0">${l.title} · 5 min</button>`).join(''):'<button class="btn" disabled>Bientôt : pas encore de leçon ici</button>'}`;
     openSheet('room');
   }
   function renderMap(){
@@ -522,7 +527,7 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     document.getElementById('s-'+name).scrollTop=0;
   }
   document.addEventListener('click',e=>{
-    const L=e.target.closest('[data-lesson]'); if(L) state.lesson=L.dataset.lesson;
+    const L=e.target.closest('[data-lesson]'); if(L){ state.lesson=L.dataset.lesson; state.level=+(L.dataset.level||0); }
     const g=e.target.closest('[data-go]'); if(g && !g.disabled){ go(g.dataset.go); return; }
     const sh=e.target.closest('[data-sheet]'); if(sh){ openSheet(sh.dataset.sheet); return; }
     if(e.target.closest('[data-close]')||e.target.id==='scrim'){ closeSheet(); return; }
@@ -569,49 +574,63 @@ fetch('content/content.json').then(r=>r.json()).then(function(C){
     document.getElementById('s-session').scrollTop=0;
   }
   const $=id=>document.getElementById(id);
+  const levelsOf=L=>L.levels||[{name:null,phrases:L.phrases,tip:L.tip,exchanges:[{line:L.character.line,note:L.character.note,replies:L.replies}],noFix:L.noFix,brilliant:L.brilliant,endTitle:L.endTitle,sendoff:L.sendoff,newPhrases:L.newPhrases}];
+  let LV=null, ex=0;
+  function showEx(i){
+    ex=i; const X=LV.exchanges[i], n=LV.exchanges.length;
+    $('l-turn').textContent='3 · À vous'+(n>1?` · échange ${i+1}/${n}`:'');
+    $('l-char-line').textContent=X.line;
+    const cn=$('l-char-note'), note=X.note||L.character.note||''; cn.textContent=note; cn.hidden=!note;
+    const order=X.replies.map((_,j)=>j).sort(()=>Math.random()-.5);
+    $('replies').innerHTML=order.map(j=>`<button class="opt" data-ri="${j}"><span>“${X.replies[j].text}”</span></button>`).join('');
+    $('verdict').hidden=true; $('to-feedback').hidden=true; $('next-ex').hidden=true;
+  }
   function startSession(){
     L=lessonById(state.lesson)||LESSONS[0];
+    const lvls=levelsOf(L); if(!(state.level>=0&&state.level<lvls.length)) state.level=0;
+    LV=lvls[state.level];
     state.firstWrong=null;
-    $('l-title').textContent=L.title;
+    $('l-title').textContent=L.title+(L.levels?' · '+'★'.repeat(state.level+1)+' '+LV.name:'');
     $('l-hook').textContent=say(L.hook); $('l-hook-fr').textContent=sayFr(L.hook);
     $('l-hookfr').textContent=L.hookFr;
-    $('l-phrases').innerHTML=L.phrases.map(ph=>`<div class="card phrase"><div><p>${ph.html}</p>${ph.fr?`<small class="muted">${ph.fr}</small>`:''}</div><button class="play" data-say="${ph.say.replace(/"/g,'&quot;')}" aria-label="Écouter">▶</button></div>`).join('');
-    $('l-tip').innerHTML=L.tip||'';
+    $('l-phrases').innerHTML=LV.phrases.map(ph=>`<div class="card phrase"><div><p>${ph.html}</p>${ph.fr?`<small class="muted">${ph.fr}</small>`:''}</div><button class="play" data-say="${ph.say.replace(/"/g,'&quot;')}" aria-label="Écouter">▶</button></div>`).join('');
+    $('l-tip').innerHTML=LV.tip||'';
     const who=L.character.who, face=who==='gary'?BRAD.replace('#9FC3E7','#F3B27A').replace('#D9A441','#5A3B26').replace('#3B4A6B','#E9C23B').replace('aria-label="Brad"','aria-label="Gary"'):BRAD;
     document.querySelector('#s-session [data-brad]').innerHTML=face;
-    const cn=$('l-char-note'); cn.textContent=L.character.note||''; cn.hidden=!L.character.note;
     $('l-char-name').textContent=L.character.name;
-    $('l-char-line').textContent=L.character.line;
-    $('replies').innerHTML=L.replies.map((r,i)=>`<button class="opt" data-ri="${i}"><span>“${r.text}”</span></button>`).join('');
-    $('verdict').hidden=true; $('to-feedback').hidden=true;
+    $('next-ex').textContent=L.character.name.split(' ')[0]+' répond… →';
+    showEx(0);
     showStep(0);
   }
   document.querySelectorAll('[data-step-next]').forEach(b=>b.addEventListener('click',()=>showStep(step+1)));
   $('replies').addEventListener('click',e=>{
     const b=e.target.closest('[data-ri]'); if(!b) return;
-    const v=L.replies[+b.dataset.ri];
+    const v=LV.exchanges[ex].replies[+b.dataset.ri];
     document.querySelectorAll('#replies .opt').forEach(x=>x.setAttribute('aria-pressed', x===b));
-    if(!v.good && state.firstWrong===null) state.firstWrong=+b.dataset.ri;
+    if(!v.good && state.firstWrong===null) state.firstWrong=[ex,+b.dataset.ri];
     const box=$('verdict');
     box.className='verdict '+(v.good?'good':'bad');
     box.innerHTML=`${v.good?cheer():'<span class="lbl">Alice dit…</span>'}<span>${say(v)}</span>${trSpan(sayFr(v))}`;
     box.hidden=false;
-    $('to-feedback').hidden=!v.good;
-    if(v.good){ b.disabled=true; }
+    const more=ex<LV.exchanges.length-1;
+    $('to-feedback').hidden=!v.good||more; $('next-ex').hidden=!v.good||!more;
+    if(v.good){ document.querySelectorAll('#replies .opt').forEach(x=>x.disabled=true); }
   });
+  $('next-ex').addEventListener('click',()=>{ showEx(ex+1); $('s-session').scrollTop=0; });
   $('to-feedback').addEventListener('click',()=>{
-    $('fb-fix').innerHTML = state.firstWrong!==null ? L.replies[state.firstWrong].fix : L.noFix;
-    $('fb-good').innerHTML = L.brilliant;
+    $('fb-fix').innerHTML = state.firstWrong!==null ? LV.exchanges[state.firstWrong[0]].replies[state.firstWrong[1]].fix : LV.noFix;
+    $('fb-good').innerHTML = LV.brilliant;
     $('l-traps').innerHTML=(L.traps||[]).map(t=>`<div><b>${t[0]}</b> → <s>${t[1]}</s> → <b>${t[2]}</b></div>`).join('');
     $('l-traps-card').hidden=!(L.traps&&L.traps.length);
-    $('l-star').textContent='+1 étoile · '+TITLE[L.situation];
-    $('l-end-title').textContent=L.endTitle;
-    $('l-sendoff').textContent=say(L.sendoff); $('l-sendoff-fr').textContent=sayFr(L.sendoff);
-    $('l-newcount').textContent=L.newPhrases.length+' nouvelles phrases ajoutées à votre banque.';
+    $('l-star').textContent=(L.levels?'★'.repeat(state.level+1)+' '+LV.name+' · ':'+1 étoile · ')+TITLE[L.situation];
+    $('l-end-title').textContent=LV.endTitle;
+    $('l-sendoff').textContent=say(LV.sendoff); $('l-sendoff-fr').textContent=sayFr(LV.sendoff);
+    $('l-newcount').textContent=LV.newPhrases.length+' nouvelles phrases ajoutées à votre banque.';
   });
   $('finish').addEventListener('click',()=>{
-    state.stars[L.situation]=Math.min(3,(state.stars[L.situation]||0)+1);
-    L.newPhrases.forEach(np=>{ if(!state.bankExtra.some(x=>x[0]===np[0])) state.bankExtra.unshift(np); });
+    const cur=state.stars[L.situation]||0;
+    state.stars[L.situation]=L.levels?Math.max(cur,state.level+1):Math.min(3,cur+1);
+    LV.newPhrases.forEach(np=>{ if(!state.bankExtra.some(x=>x[0]===np[0])) state.bankExtra.unshift(np); });
     renderMap(); go('home');
   });
 

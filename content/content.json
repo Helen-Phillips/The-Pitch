@@ -506,78 +506,10 @@
         }
       },
       "hookFr": "Aujourd'hui : avancer, reporter ou déplacer une réunion, sans faux amis.",
-      "phrases": [
-        {
-          "html": "Could we bring the meeting <b>for</b>ward to Tuesday?",
-          "say": "Could we bring the meeting forward to Tuesday?",
-          "fr": "Avancer la réunion"
-        },
-        {
-          "html": "Would it be OK to push it <b>back</b> to three o'clock?",
-          "say": "Would it be OK to push it back to three o'clock?",
-          "fr": "Reporter, décaler"
-        },
-        {
-          "html": "Shall we move it to the <b>main</b> meeting room instead?",
-          "say": "Shall we move it to the main meeting room instead?",
-          "fr": "Changer de salle (ou : « switch to Teams »)"
-        }
-      ],
-      "tip": "Pour finir, vérifiez toujours : <b>Does that still work for you?</b>",
       "character": {
         "who": "brad",
-        "name": "Brad · New York",
-        "line": "Hey, bad news. I'm stuck in Lyon. I have to stay here until Thursday, so we need to move Tuesday's meeting."
+        "name": "Brad · New York"
       },
-      "replies": [
-        {
-          "text": "Oh no! So you rest in Lyon until Thursday?",
-          "good": false,
-          "roast": "“Rest”? Brad isn't having a nap in Lyon, darling. Rester is stay. To rest is se reposer. Brad has to stay.",
-          "soft": "Careful: “rester” is “to stay”. “To rest” means “se reposer”.",
-          "fix": "Rester = <b>to stay</b>. To rest = se reposer.",
-          "fr": {
-            "roast": "« Rest » ? Brad ne fait pas la sieste à Lyon, chéri·e. Rester, c'est stay. To rest, c'est se reposer. Brad doit rester.",
-            "soft": "Attention : « rester » se dit « to stay ». « To rest » veut dire « se reposer »."
-          }
-        },
-        {
-          "text": "No problem, we can retard the meeting to Thursday.",
-          "good": false,
-          "roast": "“Retard” is an insult in English, darling. Brad is now on the phone to HR. It's “push back”.",
-          "clean": "“Retard” is a very rude word in English. Brad's eyebrows just hit the ceiling. It's “push back”.",
-          "soft": "Avoid “retard”: it's offensive in English. Say “push back”.",
-          "fix": "Reporter = <b>push it back</b>. Never “retard”.",
-          "fr": {
-            "roast": "« Retard » est une insulte en anglais, chéri·e. Brad est au téléphone avec les RH. On dit « push back ».",
-            "clean": "« Retard » est un mot très grossier en anglais. Les sourcils de Brad ont touché le plafond. On dit « push back ».",
-            "soft": "Évitez « retard » : c'est offensant en anglais. Dites « push back »."
-          }
-        },
-        {
-          "text": "Can we advance it to Monday?",
-          "good": false,
-          "roast": "“Advance” it? It's a meeting, not a soldier. It's “bring forward”. Also, Brad has to stay in Lyon until Thursday. Keep up.",
-          "soft": "Avancer = “bring forward”. And Brad can't come before Thursday.",
-          "fix": "Avancer = <b>bring it forward</b>, not “advance”.",
-          "fr": {
-            "roast": "« Advance » ? C'est une réunion, pas un soldat. On dit « bring forward ». Et Brad doit rester à Lyon jusqu'à jeudi. Suivez un peu.",
-            "soft": "Avancer = « bring forward ». Et Brad ne peut pas venir avant jeudi."
-          }
-        },
-        {
-          "text": "No problem. Shall we push it back to Thursday at ten, and do it on Teams in case you're running late?",
-          "good": true,
-          "roast": "New time, new venue, one sentence. Brad's assistant wants your number.",
-          "soft": "Perfect: new time, new place, clear and friendly.",
-          "fr": {
-            "roast": "Nouvelle heure, nouveau lieu, une seule phrase. L'assistante de Brad veut votre numéro.",
-            "soft": "Parfait : nouvelle heure, nouveau lieu, clair et sympathique."
-          }
-        }
-      ],
-      "noFix": "Nothing to fix. Show-off. Next time, finish with “Does that still work for you?”",
-      "brilliant": "New time <b>and</b> new venue in one sentence. That's how you run a call.",
       "traps": [
         [
           "Rester",
@@ -608,38 +540,420 @@
           "C'est possible pour vous ?",
           "Is it possible for you?",
           "Does that work for you?"
+        ],
+        [
+          "Disponible",
+          "disponible",
+          "available"
+        ],
+        [
+          "Ce n'est pas possible",
+          "it's not possible (sounds final)",
+          "it's a bit tricky for me"
+        ],
+        [
+          "Vous êtes toujours en retard",
+          "you are always late",
+          "it would really help if we could start on time"
         ]
       ],
-      "endTitle": "You just moved a meeting without moving a muscle in your face.",
-      "sendoff": {
-        "roast": "Same time tomorrow? Or shall we push it back?",
-        "soft": "Well done. See you tomorrow?",
-        "fr": {
-          "roast": "Même heure demain ? Ou on la reporte ?",
-          "soft": "Bravo. À demain ?"
+      "levels": [
+        {
+          "name": "Survive",
+          "phrases": [
+            {
+              "html": "Could we bring the meeting <b>for</b>ward to Tuesday?",
+              "say": "Could we bring the meeting forward to Tuesday?",
+              "fr": "Avancer la réunion"
+            },
+            {
+              "html": "Would it be OK to push it <b>back</b> to three o'clock?",
+              "say": "Would it be OK to push it back to three o'clock?",
+              "fr": "Reporter, décaler"
+            },
+            {
+              "html": "Shall we move it to the <b>main</b> meeting room instead?",
+              "say": "Shall we move it to the main meeting room instead?",
+              "fr": "Changer de salle (ou : « switch to Teams »)"
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Hey, bad news. I'm stuck in Lyon. I have to stay here until Thursday, so we need to move Tuesday's meeting.",
+              "replies": [
+                {
+                  "text": "Oh no! So you rest in Lyon until Thursday?",
+                  "good": false,
+                  "roast": "“Rest”? Brad isn't having a nap in Lyon, darling. Rester is stay. To rest is se reposer. Brad has to stay.",
+                  "soft": "Careful: “rester” is “to stay”. “To rest” means “se reposer”.",
+                  "fix": "Rester = <b>to stay</b>. To rest = se reposer.",
+                  "fr": {
+                    "roast": "« Rest » ? Brad ne fait pas la sieste à Lyon, chéri·e. Rester, c'est stay. To rest, c'est se reposer. Brad doit rester.",
+                    "soft": "Attention : « rester » se dit « to stay ». « To rest » veut dire « se reposer »."
+                  }
+                },
+                {
+                  "text": "No problem, we can retard the meeting to Thursday.",
+                  "good": false,
+                  "roast": "“Retard” is an insult in English, darling. Brad is now on the phone to HR. It's “push back”.",
+                  "clean": "“Retard” is a very rude word in English. Brad's eyebrows just hit the ceiling. It's “push back”.",
+                  "soft": "Avoid “retard”: it's offensive in English. Say “push back”.",
+                  "fix": "Reporter = <b>push it back</b>. Never “retard”.",
+                  "fr": {
+                    "roast": "« Retard » est une insulte en anglais, chéri·e. Brad est au téléphone avec les RH. On dit « push back ».",
+                    "clean": "« Retard » est un mot très grossier en anglais. Les sourcils de Brad ont touché le plafond. On dit « push back ».",
+                    "soft": "Évitez « retard » : c'est offensant en anglais. Dites « push back »."
+                  }
+                },
+                {
+                  "text": "Can we advance it to Monday?",
+                  "good": false,
+                  "roast": "“Advance” it? It's a meeting, not a soldier. It's “bring forward”. Also, Brad has to stay in Lyon until Thursday. Keep up.",
+                  "soft": "Avancer = “bring forward”. And Brad can't come before Thursday.",
+                  "fix": "Avancer = <b>bring it forward</b>, not “advance”.",
+                  "fr": {
+                    "roast": "« Advance » ? C'est une réunion, pas un soldat. On dit « bring forward ». Et Brad doit rester à Lyon jusqu'à jeudi. Suivez un peu.",
+                    "soft": "Avancer = « bring forward ». Et Brad ne peut pas venir avant jeudi."
+                  }
+                },
+                {
+                  "text": "No problem. Shall we push it back to Thursday at ten, and do it on Teams in case you're running late?",
+                  "good": true,
+                  "roast": "New time, new venue, one sentence. Brad's assistant wants your number.",
+                  "soft": "Perfect: new time, new place, clear and friendly.",
+                  "fr": {
+                    "roast": "Nouvelle heure, nouveau lieu, une seule phrase. L'assistante de Brad veut votre numéro.",
+                    "soft": "Parfait : nouvelle heure, nouveau lieu, clair et sympathique."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Show-off. Next time, finish with “Does that still work for you?”",
+          "brilliant": "New time <b>and</b> new venue in one sentence. That's how you run a call.",
+          "endTitle": "You just moved a meeting without moving a muscle in your face.",
+          "sendoff": {
+            "roast": "Same time tomorrow? Or shall we push it back?",
+            "soft": "Well done. See you tomorrow?",
+            "fr": {
+              "roast": "Même heure demain ? Ou on la reporte ?",
+              "soft": "Bravo. À demain ?"
+            }
+          },
+          "newPhrases": [
+            [
+              "Could we bring the meeting forward to Tuesday?",
+              "Move a meeting"
+            ],
+            [
+              "Would it be OK to push it back to three o'clock?",
+              "Move a meeting"
+            ],
+            [
+              "Shall we move it to the main meeting room instead?",
+              "Move a meeting"
+            ],
+            [
+              "I have to stay until Thursday.",
+              "Move a meeting"
+            ],
+            [
+              "Does that still work for you?",
+              "Move a meeting"
+            ]
+          ],
+          "tip": "Pour finir, vérifiez toujours : <b>Does that still work for you?</b>"
+        },
+        {
+          "name": "Handle",
+          "phrases": [
+            {
+              "html": "Friday's a bit <b>trick</b>y for me, I'm afraid.",
+              "say": "Friday's a bit tricky for me, I'm afraid.",
+              "fr": "Vendredi, ça m'arrange moins."
+            },
+            {
+              "html": "Could we do Thursday at <b>four</b> instead?",
+              "say": "Could we do Thursday at four instead?",
+              "fr": "On pourrait faire jeudi à 16 h plutôt ?"
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Hey, bad news. I'm stuck in Lyon. I have to stay here until Thursday, so we need to move Tuesday's meeting.",
+              "replies": [
+                {
+                  "text": "Oh no! So you rest in Lyon until Thursday?",
+                  "good": false,
+                  "roast": "“Rest”? Brad isn't having a nap in Lyon, darling. Rester is stay. To rest is se reposer. Brad has to stay.",
+                  "soft": "Careful: “rester” is “to stay”. “To rest” means “se reposer”.",
+                  "fix": "Rester = <b>to stay</b>. To rest = se reposer.",
+                  "fr": {
+                    "roast": "« Rest » ? Brad ne fait pas la sieste à Lyon, chéri·e. Rester, c'est stay. To rest, c'est se reposer. Brad doit rester.",
+                    "soft": "Attention : « rester » se dit « to stay ». « To rest » veut dire « se reposer »."
+                  }
+                },
+                {
+                  "text": "No problem, we can retard the meeting to Thursday.",
+                  "good": false,
+                  "roast": "“Retard” is an insult in English, darling. Brad is now on the phone to HR. It's “push back”.",
+                  "clean": "“Retard” is a very rude word in English. Brad's eyebrows just hit the ceiling. It's “push back”.",
+                  "soft": "Avoid “retard”: it's offensive in English. Say “push back”.",
+                  "fix": "Reporter = <b>push it back</b>. Never “retard”.",
+                  "fr": {
+                    "roast": "« Retard » est une insulte en anglais, chéri·e. Brad est au téléphone avec les RH. On dit « push back ».",
+                    "clean": "« Retard » est un mot très grossier en anglais. Les sourcils de Brad ont touché le plafond. On dit « push back ».",
+                    "soft": "Évitez « retard » : c'est offensant en anglais. Dites « push back »."
+                  }
+                },
+                {
+                  "text": "Can we advance it to Monday?",
+                  "good": false,
+                  "roast": "“Advance” it? It's a meeting, not a soldier. It's “bring forward”. Also, Brad has to stay in Lyon until Thursday. Keep up.",
+                  "soft": "Avancer = “bring forward”. And Brad can't come before Thursday.",
+                  "fix": "Avancer = <b>bring it forward</b>, not “advance”.",
+                  "fr": {
+                    "roast": "« Advance » ? C'est une réunion, pas un soldat. On dit « bring forward ». Et Brad doit rester à Lyon jusqu'à jeudi. Suivez un peu.",
+                    "soft": "Avancer = « bring forward ». Et Brad ne peut pas venir avant jeudi."
+                  }
+                },
+                {
+                  "text": "No problem. Shall we push it back to Thursday at ten, and do it on Teams in case you're running late?",
+                  "good": true,
+                  "roast": "New time, new venue, one sentence. Brad's assistant wants your number.",
+                  "soft": "Perfect: new time, new place, clear and friendly.",
+                  "fr": {
+                    "roast": "Nouvelle heure, nouveau lieu, une seule phrase. L'assistante de Brad veut votre numéro.",
+                    "soft": "Parfait : nouvelle heure, nouveau lieu, clair et sympathique."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Actually, Thursday morning's no good, I'm back-to-back. What about Friday morning?",
+              "note": "Vous êtes avec un client tout le vendredi matin.",
+              "replies": [
+                {
+                  "text": "Friday I am not disponible.",
+                  "good": false,
+                  "roast": "Disponible? Brad's googling it. It's “available”, and “I'm not available” still sounds like a door slamming.",
+                  "soft": "Disponible = “available”. But try a softer no: “Friday's a bit tricky for me”.",
+                  "fr": {
+                    "roast": "Disponible ? Brad est en train de chercher sur Google. On dit « available », et « I'm not available » sonne quand même comme une porte qui claque.",
+                    "soft": "Disponible = « available ». Mais essayez un non plus doux : « Friday's a bit tricky for me »."
+                  },
+                  "fix": "Disponible = <b>available</b>. Softer: <b>Friday's a bit tricky for me.</b>"
+                },
+                {
+                  "text": "No. Thursday or nothing.",
+                  "good": false,
+                  "roast": "Thursday or nothing? This is a meeting, not a hostage situation.",
+                  "soft": "Too blunt. Say no softly and offer another time.",
+                  "fr": {
+                    "roast": "Jeudi ou rien ? C'est une réunion, pas une prise d'otages.",
+                    "soft": "Trop direct. Dites non en douceur et proposez un autre moment."
+                  },
+                  "fix": "Offer another time: <b>Could we do Thursday at four instead?</b>"
+                },
+                {
+                  "text": "Friday's a bit tricky for me, I'm afraid, I'm with a client all morning. Could we do Thursday at four instead? Does that work for you?",
+                  "good": true,
+                  "roast": "A soft no, a reason, and a new offer. Brad didn't even notice you said no.",
+                  "soft": "Perfect: a soft no, a reason, and a new offer.",
+                  "fr": {
+                    "roast": "Un non tout en douceur, une raison et une nouvelle proposition. Brad n'a même pas remarqué que vous avez dit non.",
+                    "soft": "Parfait : un non en douceur, une raison et une nouvelle proposition."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Brad didn't even notice you said no.",
+          "brilliant": "A soft no, a <b>reason</b>, and a new offer.",
+          "endTitle": "You said no to Brad and he thanked you.",
+          "sendoff": {
+            "roast": "Ready for the boss level?",
+            "soft": "Well done. Ready for level 3?",
+            "fr": {
+              "roast": "Prêt pour le niveau final ?",
+              "soft": "Bravo. Prêt pour le niveau 3 ?"
+            }
+          },
+          "newPhrases": [
+            [
+              "Friday's a bit tricky for me, I'm afraid.",
+              "Move a meeting"
+            ],
+            [
+              "Could we do Thursday at four instead?",
+              "Move a meeting"
+            ]
+          ]
+        },
+        {
+          "name": "Own it",
+          "phrases": [
+            {
+              "html": "It would really <b>help</b> if we could start on time.",
+              "say": "It would really help if we could start on time.",
+              "fr": "Ce serait vraiment utile qu'on commence à l'heure."
+            },
+            {
+              "html": "Shall I send you a <b>re</b>minder?",
+              "say": "Shall I send you a reminder?",
+              "fr": "Je vous envoie un rappel ?"
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Hey, bad news. I'm stuck in Lyon. I have to stay here until Thursday, so we need to move Tuesday's meeting.",
+              "replies": [
+                {
+                  "text": "Oh no! So you rest in Lyon until Thursday?",
+                  "good": false,
+                  "roast": "“Rest”? Brad isn't having a nap in Lyon, darling. Rester is stay. To rest is se reposer. Brad has to stay.",
+                  "soft": "Careful: “rester” is “to stay”. “To rest” means “se reposer”.",
+                  "fix": "Rester = <b>to stay</b>. To rest = se reposer.",
+                  "fr": {
+                    "roast": "« Rest » ? Brad ne fait pas la sieste à Lyon, chéri·e. Rester, c'est stay. To rest, c'est se reposer. Brad doit rester.",
+                    "soft": "Attention : « rester » se dit « to stay ». « To rest » veut dire « se reposer »."
+                  }
+                },
+                {
+                  "text": "No problem, we can retard the meeting to Thursday.",
+                  "good": false,
+                  "roast": "“Retard” is an insult in English, darling. Brad is now on the phone to HR. It's “push back”.",
+                  "clean": "“Retard” is a very rude word in English. Brad's eyebrows just hit the ceiling. It's “push back”.",
+                  "soft": "Avoid “retard”: it's offensive in English. Say “push back”.",
+                  "fix": "Reporter = <b>push it back</b>. Never “retard”.",
+                  "fr": {
+                    "roast": "« Retard » est une insulte en anglais, chéri·e. Brad est au téléphone avec les RH. On dit « push back ».",
+                    "clean": "« Retard » est un mot très grossier en anglais. Les sourcils de Brad ont touché le plafond. On dit « push back ».",
+                    "soft": "Évitez « retard » : c'est offensant en anglais. Dites « push back »."
+                  }
+                },
+                {
+                  "text": "Can we advance it to Monday?",
+                  "good": false,
+                  "roast": "“Advance” it? It's a meeting, not a soldier. It's “bring forward”. Also, Brad has to stay in Lyon until Thursday. Keep up.",
+                  "soft": "Avancer = “bring forward”. And Brad can't come before Thursday.",
+                  "fix": "Avancer = <b>bring it forward</b>, not “advance”.",
+                  "fr": {
+                    "roast": "« Advance » ? C'est une réunion, pas un soldat. On dit « bring forward ». Et Brad doit rester à Lyon jusqu'à jeudi. Suivez un peu.",
+                    "soft": "Avancer = « bring forward ». Et Brad ne peut pas venir avant jeudi."
+                  }
+                },
+                {
+                  "text": "No problem. Shall we push it back to Thursday at ten, and do it on Teams in case you're running late?",
+                  "good": true,
+                  "roast": "New time, new venue, one sentence. Brad's assistant wants your number.",
+                  "soft": "Perfect: new time, new place, clear and friendly.",
+                  "fr": {
+                    "roast": "Nouvelle heure, nouveau lieu, une seule phrase. L'assistante de Brad veut votre numéro.",
+                    "soft": "Parfait : nouvelle heure, nouveau lieu, clair et sympathique."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Actually, Thursday morning's no good, I'm back-to-back. What about Friday morning?",
+              "note": "Vous êtes avec un client tout le vendredi matin.",
+              "replies": [
+                {
+                  "text": "Friday I am not disponible.",
+                  "good": false,
+                  "roast": "Disponible? Brad's googling it. It's “available”, and “I'm not available” still sounds like a door slamming.",
+                  "soft": "Disponible = “available”. But try a softer no: “Friday's a bit tricky for me”.",
+                  "fr": {
+                    "roast": "Disponible ? Brad est en train de chercher sur Google. On dit « available », et « I'm not available » sonne quand même comme une porte qui claque.",
+                    "soft": "Disponible = « available ». Mais essayez un non plus doux : « Friday's a bit tricky for me »."
+                  },
+                  "fix": "Disponible = <b>available</b>. Softer: <b>Friday's a bit tricky for me.</b>"
+                },
+                {
+                  "text": "No. Thursday or nothing.",
+                  "good": false,
+                  "roast": "Thursday or nothing? This is a meeting, not a hostage situation.",
+                  "soft": "Too blunt. Say no softly and offer another time.",
+                  "fr": {
+                    "roast": "Jeudi ou rien ? C'est une réunion, pas une prise d'otages.",
+                    "soft": "Trop direct. Dites non en douceur et proposez un autre moment."
+                  },
+                  "fix": "Offer another time: <b>Could we do Thursday at four instead?</b>"
+                },
+                {
+                  "text": "Friday's a bit tricky for me, I'm afraid, I'm with a client all morning. Could we do Thursday at four instead? Does that work for you?",
+                  "good": true,
+                  "roast": "A soft no, a reason, and a new offer. Brad didn't even notice you said no.",
+                  "soft": "Perfect: a soft no, a reason, and a new offer.",
+                  "fr": {
+                    "roast": "Un non tout en douceur, une raison et une nouvelle proposition. Brad n'a même pas remarqué que vous avez dit non.",
+                    "soft": "Parfait : un non en douceur, une raison et une nouvelle proposition."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Four's great. I'll probably be ten minutes late, as usual, ha!",
+              "note": "Brad est arrivé en retard aux trois dernières réunions, et Sandrine doit partir à 16 h 30.",
+              "replies": [
+                {
+                  "text": "You are always late. It's not professional.",
+                  "good": false,
+                  "roast": "True, and now Brad will be twenty minutes late, out of spite. Being right isn't the same as winning.",
+                  "soft": "True, but it sounds like a telling-off. Try “It would really help if we could start on time”.",
+                  "fr": {
+                    "roast": "C'est vrai, et maintenant Brad aura vingt minutes de retard, par dépit. Avoir raison, ce n'est pas gagner.",
+                    "soft": "Vrai, mais ça sonne comme un reproche. Essayez « It would really help if we could start on time »."
+                  },
+                  "fix": "Vous êtes toujours en retard = <b>It would really help if we could start on time.</b>"
+                },
+                {
+                  "text": "Ha ha, no problem!",
+                  "good": false,
+                  "roast": "Brad told you he'll be late and you laughed along. Sandrine will be thrilled.",
+                  "soft": "Don't let it go: Sandrine has to leave at half past four.",
+                  "fr": {
+                    "roast": "Brad vous annonce qu'il sera en retard et vous riez avec lui. Sandrine va être ravie.",
+                    "soft": "Ne laissez pas passer : Sandrine doit partir à 16 h 30."
+                  },
+                  "fix": "Say it kindly: <b>It would really help if we could start on time.</b>"
+                },
+                {
+                  "text": "Great, Thursday at four it is. It would really help if we could start on time, because Sandrine has to leave at half past. Shall I send you a reminder?",
+                  "good": true,
+                  "roast": "You told Brad to stop being late, and he thinks you did him a favour. That's owning the room.",
+                  "soft": "Perfect: a positive request with a reason, and a helpful offer.",
+                  "fr": {
+                    "roast": "Vous avez dit à Brad d'arrêter d'être en retard, et il croit que vous lui rendez service. Ça, c'est maîtriser la salle.",
+                    "soft": "Parfait : une demande positive avec une raison, et une offre utile."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Brad will be early. Probably.",
+          "brilliant": "You asked for punctuality in <b>positive language</b>: “It would really help if…”.",
+          "endTitle": "Meeting moved, Brad on time, Sandrine happy.",
+          "sendoff": {
+            "roast": "Same time tomorrow?",
+            "soft": "Brilliant work. See you tomorrow.",
+            "fr": {
+              "roast": "Même heure demain ?",
+              "soft": "Excellent travail. À demain."
+            }
+          },
+          "newPhrases": [
+            [
+              "It would really help if we could start on time.",
+              "Move a meeting"
+            ],
+            [
+              "Shall I send you a reminder?",
+              "Move a meeting"
+            ]
+          ]
         }
-      },
-      "newPhrases": [
-        [
-          "Could we bring the meeting forward to Tuesday?",
-          "Move a meeting"
-        ],
-        [
-          "Would it be OK to push it back to three o'clock?",
-          "Move a meeting"
-        ],
-        [
-          "Shall we move it to the main meeting room instead?",
-          "Move a meeting"
-        ],
-        [
-          "I have to stay until Thursday.",
-          "Move a meeting"
-        ],
-        [
-          "Does that still work for you?",
-          "Move a meeting"
-        ]
       ]
     },
     {
@@ -655,77 +969,11 @@
         }
       },
       "hookFr": "Aujourd'hui : recevoir une livraison, vérifier, et signer avec réserves.",
-      "phrases": [
-        {
-          "html": "Could you bring it round to the loading <b>bay</b>?",
-          "say": "Could you bring it round to the loading bay?",
-          "fr": "Pouvez-vous passer par le quai de livraison ?"
-        },
-        {
-          "html": "Hang on, I'll just <b>check</b> it before I sign.",
-          "say": "Hang on, I'll just check it before I sign.",
-          "fr": "Attendez, je vérifie avant de signer."
-        },
-        {
-          "html": "I'm signing for it as <b>dam</b>aged.",
-          "say": "I'm signing for it as damaged.",
-          "fr": "Je signe avec réserves (colis abîmé)."
-        }
-      ],
-      "tip": "Bonus : <b>We were expecting twelve, but there are only ten. Can you note that on the delivery note?</b>",
       "character": {
         "who": "gary",
         "name": "Gary · le livreur",
-        "line": "Alright? Delivery for The Pitch. Twelve boxes. Sign here, would you? I'm on a double yellow.",
         "note": "Vous comptez dix cartons, et l'un d'eux est écrasé."
       },
-      "replies": [
-        {
-          "text": "OK, I sign.",
-          "good": false,
-          "roast": "Congratulations. You just signed for twelve boxes you didn't get and one you can't use. Gary's gone. So is your refund.",
-          "soft": "Careful: never sign before you check. Two boxes are missing and one is damaged.",
-          "fix": "Check first: <b>Hang on, I'll just check it before I sign.</b>",
-          "fr": {
-            "roast": "Félicitations. Vous venez de signer pour douze cartons que vous n'avez pas reçus, dont un inutilisable. Gary est parti. Votre remboursement aussi.",
-            "soft": "Attention : ne signez jamais avant de vérifier. Il manque deux cartons et un est abîmé."
-          }
-        },
-        {
-          "text": "Wait, I must control the goods.",
-          "good": false,
-          "roast": "Control them? They're boxes, not toddlers. It's “check the goods”. Gary thinks you're about to arrest the parcels.",
-          "soft": "Contrôler = “check”. Say “I'll just check the goods”.",
-          "fix": "Contrôler la marchandise = <b>check the goods</b>.",
-          "fr": {
-            "roast": "Les contrôler ? Ce sont des cartons, pas des enfants. On dit « check the goods ». Gary croit que vous allez arrêter les colis.",
-            "soft": "Contrôler = « check ». Dites « I'll just check the goods »."
-          }
-        },
-        {
-          "text": "I sign with reserves, this colis is broken.",
-          "good": false,
-          "roast": "Reserves? Gary thinks you're booking a table for two. You “sign for it as damaged”. And a colis is a parcel or a box.",
-          "soft": "Signer avec réserves = “sign for it as damaged”. Un colis = “a parcel” or “a box”.",
-          "fix": "Signer avec réserves = <b>sign for it as damaged</b>. Colis = <b>parcel, box</b>.",
-          "fr": {
-            "roast": "Des réserves ? Gary croit que vous réservez une table pour deux. On dit « sign for it as damaged ». Et un colis, c'est « a parcel » ou « a box ».",
-            "soft": "Signer avec réserves = « sign for it as damaged ». Un colis = « a parcel » ou « a box »."
-          }
-        },
-        {
-          "text": "Hang on, I'll just check it first. There are only ten boxes, not twelve, and this one's damaged, so I'm signing for it as damaged. Can you note that on the delivery note?",
-          "good": true,
-          "roast": "Polite, firm, and Gary's double yellow is not your problem. Accounts will build you a statue.",
-          "soft": "Perfect: you checked, you named the problem, and you got it on paper.",
-          "fr": {
-            "roast": "Poli, ferme, et la place interdite de Gary n'est pas votre problème. La compta va vous élever une statue.",
-            "soft": "Parfait : vous avez vérifié, nommé le problème, et tout est écrit."
-          }
-        }
-      ],
-      "noFix": "Nothing to fix. Gary is impressed and slightly scared.",
-      "brilliant": "You checked, you counted, and you got it <b>on the delivery note</b>. That's how you take a delivery.",
       "traps": [
         [
           "Contrôler la marchandise",
@@ -761,38 +1009,400 @@
           "Une palette",
           "a palette (that's for painters)",
           "a pallet"
+        ],
+        [
+          "Je n'ai pas confiance",
+          "I don't trust you (an accusation)",
+          "I just need to check"
+        ],
+        [
+          "Le dépôt",
+          "the deposit (that's money)",
+          "the depot"
+        ],
+        [
+          "Je préfère pas",
+          "I prefer not",
+          "I'd rather not, if that's OK"
         ]
       ],
-      "endTitle": "You just stopped a man on a double yellow from rushing you.",
-      "sendoff": {
-        "roast": "Honestly? That's leadership. Same time tomorrow.",
-        "soft": "Well done. See you tomorrow?",
-        "fr": {
-          "roast": "Franchement ? C'est ça, le leadership. À demain, même heure.",
-          "soft": "Bravo. À demain ?"
+      "levels": [
+        {
+          "name": "Survive",
+          "phrases": [
+            {
+              "html": "Could you bring it round to the loading <b>bay</b>?",
+              "say": "Could you bring it round to the loading bay?",
+              "fr": "Pouvez-vous passer par le quai de livraison ?"
+            },
+            {
+              "html": "Hang on, I'll just <b>check</b> it before I sign.",
+              "say": "Hang on, I'll just check it before I sign.",
+              "fr": "Attendez, je vérifie avant de signer."
+            },
+            {
+              "html": "I'm signing for it as <b>dam</b>aged.",
+              "say": "I'm signing for it as damaged.",
+              "fr": "Je signe avec réserves (colis abîmé)."
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Alright? Delivery for The Pitch. Twelve boxes. Sign here, would you? I'm on a double yellow.",
+              "replies": [
+                {
+                  "text": "OK, I sign.",
+                  "good": false,
+                  "roast": "Congratulations. You just signed for twelve boxes you didn't get and one you can't use. Gary's gone. So is your refund.",
+                  "soft": "Careful: never sign before you check. Two boxes are missing and one is damaged.",
+                  "fix": "Check first: <b>Hang on, I'll just check it before I sign.</b>",
+                  "fr": {
+                    "roast": "Félicitations. Vous venez de signer pour douze cartons que vous n'avez pas reçus, dont un inutilisable. Gary est parti. Votre remboursement aussi.",
+                    "soft": "Attention : ne signez jamais avant de vérifier. Il manque deux cartons et un est abîmé."
+                  }
+                },
+                {
+                  "text": "Wait, I must control the goods.",
+                  "good": false,
+                  "roast": "Control them? They're boxes, not toddlers. It's “check the goods”. Gary thinks you're about to arrest the parcels.",
+                  "soft": "Contrôler = “check”. Say “I'll just check the goods”.",
+                  "fix": "Contrôler la marchandise = <b>check the goods</b>.",
+                  "fr": {
+                    "roast": "Les contrôler ? Ce sont des cartons, pas des enfants. On dit « check the goods ». Gary croit que vous allez arrêter les colis.",
+                    "soft": "Contrôler = « check ». Dites « I'll just check the goods »."
+                  }
+                },
+                {
+                  "text": "I sign with reserves, this colis is broken.",
+                  "good": false,
+                  "roast": "Reserves? Gary thinks you're booking a table for two. You “sign for it as damaged”. And a colis is a parcel or a box.",
+                  "soft": "Signer avec réserves = “sign for it as damaged”. Un colis = “a parcel” or “a box”.",
+                  "fix": "Signer avec réserves = <b>sign for it as damaged</b>. Colis = <b>parcel, box</b>.",
+                  "fr": {
+                    "roast": "Des réserves ? Gary croit que vous réservez une table pour deux. On dit « sign for it as damaged ». Et un colis, c'est « a parcel » ou « a box ».",
+                    "soft": "Signer avec réserves = « sign for it as damaged ». Un colis = « a parcel » ou « a box »."
+                  }
+                },
+                {
+                  "text": "Hang on, I'll just check it first. There are only ten boxes, not twelve, and this one's damaged, so I'm signing for it as damaged. Can you note that on the delivery note?",
+                  "good": true,
+                  "roast": "Polite, firm, and Gary's double yellow is not your problem. Accounts will build you a statue.",
+                  "soft": "Perfect: you checked, you named the problem, and you got it on paper.",
+                  "fr": {
+                    "roast": "Poli, ferme, et la place interdite de Gary n'est pas votre problème. La compta va vous élever une statue.",
+                    "soft": "Parfait : vous avez vérifié, nommé le problème, et tout est écrit."
+                  }
+                }
+              ],
+              "note": "Vous comptez dix cartons, et l'un d'eux est écrasé."
+            }
+          ],
+          "noFix": "Nothing to fix. Gary is impressed and slightly scared.",
+          "brilliant": "You checked, you counted, and you got it <b>on the delivery note</b>. That's how you take a delivery.",
+          "endTitle": "You just stopped a man on a double yellow from rushing you.",
+          "sendoff": {
+            "roast": "Honestly? That's leadership. Same time tomorrow.",
+            "soft": "Well done. See you tomorrow?",
+            "fr": {
+              "roast": "Franchement ? C'est ça, le leadership. À demain, même heure.",
+              "soft": "Bravo. À demain ?"
+            }
+          },
+          "newPhrases": [
+            [
+              "Hang on, I'll just check it before I sign.",
+              "Take a delivery"
+            ],
+            [
+              "I'm signing for it as damaged.",
+              "Take a delivery"
+            ],
+            [
+              "Can you note that on the delivery note?",
+              "Take a delivery"
+            ],
+            [
+              "Could you bring it round to the loading bay?",
+              "Take a delivery"
+            ],
+            [
+              "We were expecting twelve, but there are only ten.",
+              "Take a delivery"
+            ]
+          ],
+          "tip": "Bonus : <b>We were expecting twelve, but there are only ten. Can you note that on the delivery note?</b>"
+        },
+        {
+          "name": "Handle",
+          "phrases": [
+            {
+              "html": "I'm sure it <b>is</b>, but I have to check before I sign.",
+              "say": "I'm sure it is, but I have to check before I sign.",
+              "fr": "Je n'en doute pas, mais je dois vérifier avant de signer."
+            },
+            {
+              "html": "It'll only take two <b>min</b>utes.",
+              "say": "It'll only take two minutes.",
+              "fr": "Ça ne prendra que deux minutes."
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Alright? Delivery for The Pitch. Twelve boxes. Sign here, would you? I'm on a double yellow.",
+              "replies": [
+                {
+                  "text": "OK, I sign.",
+                  "good": false,
+                  "roast": "Congratulations. You just signed for twelve boxes you didn't get and one you can't use. Gary's gone. So is your refund.",
+                  "soft": "Careful: never sign before you check. Two boxes are missing and one is damaged.",
+                  "fix": "Check first: <b>Hang on, I'll just check it before I sign.</b>",
+                  "fr": {
+                    "roast": "Félicitations. Vous venez de signer pour douze cartons que vous n'avez pas reçus, dont un inutilisable. Gary est parti. Votre remboursement aussi.",
+                    "soft": "Attention : ne signez jamais avant de vérifier. Il manque deux cartons et un est abîmé."
+                  }
+                },
+                {
+                  "text": "Wait, I must control the goods.",
+                  "good": false,
+                  "roast": "Control them? They're boxes, not toddlers. It's “check the goods”. Gary thinks you're about to arrest the parcels.",
+                  "soft": "Contrôler = “check”. Say “I'll just check the goods”.",
+                  "fix": "Contrôler la marchandise = <b>check the goods</b>.",
+                  "fr": {
+                    "roast": "Les contrôler ? Ce sont des cartons, pas des enfants. On dit « check the goods ». Gary croit que vous allez arrêter les colis.",
+                    "soft": "Contrôler = « check ». Dites « I'll just check the goods »."
+                  }
+                },
+                {
+                  "text": "Hang on, I'll just check it before I sign.",
+                  "good": true,
+                  "roast": "Check first, sign later. Brace yourself, Gary has opinions.",
+                  "soft": "Good: check before you sign. Gary is going to push back.",
+                  "fr": {
+                    "roast": "On vérifie d'abord, on signe ensuite. Accrochez-vous, Gary a son avis.",
+                    "soft": "Bien : vérifiez avant de signer. Gary va insister."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Come on, love, it's all there. Nobody checks. If there's a problem, ring the depot.",
+              "replies": [
+                {
+                  "text": "OK, if you say so.",
+                  "good": false,
+                  "roast": "Gary said “trust me” and you signed. That's how people end up with ten boxes and a bill for twelve.",
+                  "soft": "Don't give in: you still need to count before you sign.",
+                  "fr": {
+                    "roast": "Gary a dit « faites-moi confiance » et vous avez signé. C'est comme ça qu'on se retrouve avec dix cartons et une facture pour douze.",
+                    "soft": "Ne cédez pas : vous devez compter avant de signer."
+                  },
+                  "fix": "Hold firm: <b>I'm sure it is, but I have to check before I sign.</b>"
+                },
+                {
+                  "text": "I don't trust you.",
+                  "good": false,
+                  "roast": "Gary's crushed. Like box number seven. You don't need to accuse him, you just need to count.",
+                  "soft": "That sounds like an accusation. You just need to check.",
+                  "fr": {
+                    "roast": "Gary est anéanti. Comme le carton numéro sept. Pas besoin de l'accuser, il suffit de compter.",
+                    "soft": "Ça sonne comme une accusation. Vous avez juste besoin de vérifier."
+                  },
+                  "fix": "Je n'ai pas confiance = an accusation. Say <b>I just need to check.</b>"
+                },
+                {
+                  "text": "I'm sure it is, but I have to check before I sign. It'll only take two minutes. Thanks for waiting.",
+                  "good": true,
+                  "roast": "Polite, firm, and you thanked him for something he didn't want to do. Clever.",
+                  "soft": "Perfect: polite, firm, and you thanked him for waiting.",
+                  "fr": {
+                    "roast": "Poli, ferme, et vous l'avez remercié pour quelque chose qu'il ne voulait pas faire. Malin.",
+                    "soft": "Parfait : poli, ferme, et vous l'avez remercié d'attendre."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Gary waited, and he's not even cross.",
+          "brilliant": "Polite, firm, and you <b>thanked him</b> for waiting.",
+          "endTitle": "He wanted a signature, you gave him a smile and a count.",
+          "sendoff": {
+            "roast": "Ready for the boss level?",
+            "soft": "Well done. Ready for level 3?",
+            "fr": {
+              "roast": "Prêt pour le niveau final ?",
+              "soft": "Bravo. Prêt pour le niveau 3 ?"
+            }
+          },
+          "newPhrases": [
+            [
+              "I'm sure it is, but I have to check before I sign.",
+              "Take a delivery"
+            ],
+            [
+              "It'll only take two minutes.",
+              "Take a delivery"
+            ]
+          ]
+        },
+        {
+          "name": "Own it",
+          "phrases": [
+            {
+              "html": "I'd rather <b>not</b>, if that's OK.",
+              "say": "I'd rather not, if that's OK.",
+              "fr": "Je préfère ne pas le faire, si ça vous va."
+            },
+            {
+              "html": "Could you let the <b>de</b>pot know?",
+              "say": "Could you let the depot know?",
+              "fr": "Pouvez-vous prévenir le dépôt ?"
+            },
+            {
+              "html": "It would really <b>help</b> if they could…",
+              "say": "It would really help if they could…",
+              "fr": "Ce serait vraiment utile qu'ils…"
+            }
+          ],
+          "exchanges": [
+            {
+              "line": "Alright? Delivery for The Pitch. Twelve boxes. Sign here, would you? I'm on a double yellow.",
+              "replies": [
+                {
+                  "text": "OK, I sign.",
+                  "good": false,
+                  "roast": "Congratulations. You just signed for twelve boxes you didn't get and one you can't use. Gary's gone. So is your refund.",
+                  "soft": "Careful: never sign before you check. Two boxes are missing and one is damaged.",
+                  "fix": "Check first: <b>Hang on, I'll just check it before I sign.</b>",
+                  "fr": {
+                    "roast": "Félicitations. Vous venez de signer pour douze cartons que vous n'avez pas reçus, dont un inutilisable. Gary est parti. Votre remboursement aussi.",
+                    "soft": "Attention : ne signez jamais avant de vérifier. Il manque deux cartons et un est abîmé."
+                  }
+                },
+                {
+                  "text": "Wait, I must control the goods.",
+                  "good": false,
+                  "roast": "Control them? They're boxes, not toddlers. It's “check the goods”. Gary thinks you're about to arrest the parcels.",
+                  "soft": "Contrôler = “check”. Say “I'll just check the goods”.",
+                  "fix": "Contrôler la marchandise = <b>check the goods</b>.",
+                  "fr": {
+                    "roast": "Les contrôler ? Ce sont des cartons, pas des enfants. On dit « check the goods ». Gary croit que vous allez arrêter les colis.",
+                    "soft": "Contrôler = « check ». Dites « I'll just check the goods »."
+                  }
+                },
+                {
+                  "text": "Hang on, I'll just check it before I sign.",
+                  "good": true,
+                  "roast": "Check first, sign later. Brace yourself, Gary has opinions.",
+                  "soft": "Good: check before you sign. Gary is going to push back.",
+                  "fr": {
+                    "roast": "On vérifie d'abord, on signe ensuite. Accrochez-vous, Gary a son avis.",
+                    "soft": "Bien : vérifiez avant de signer. Gary va insister."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Come on, love, it's all there. Nobody checks. If there's a problem, ring the depot.",
+              "replies": [
+                {
+                  "text": "OK, if you say so.",
+                  "good": false,
+                  "roast": "Gary said “trust me” and you signed. That's how people end up with ten boxes and a bill for twelve.",
+                  "soft": "Don't give in: you still need to count before you sign.",
+                  "fr": {
+                    "roast": "Gary a dit « faites-moi confiance » et vous avez signé. C'est comme ça qu'on se retrouve avec dix cartons et une facture pour douze.",
+                    "soft": "Ne cédez pas : vous devez compter avant de signer."
+                  },
+                  "fix": "Hold firm: <b>I'm sure it is, but I have to check before I sign.</b>"
+                },
+                {
+                  "text": "I don't trust you.",
+                  "good": false,
+                  "roast": "Gary's crushed. Like box number seven. You don't need to accuse him, you just need to count.",
+                  "soft": "That sounds like an accusation. You just need to check.",
+                  "fr": {
+                    "roast": "Gary est anéanti. Comme le carton numéro sept. Pas besoin de l'accuser, il suffit de compter.",
+                    "soft": "Ça sonne comme une accusation. Vous avez juste besoin de vérifier."
+                  },
+                  "fix": "Je n'ai pas confiance = an accusation. Say <b>I just need to check.</b>"
+                },
+                {
+                  "text": "I'm sure it is, but I have to check before I sign. It'll only take two minutes. Thanks for waiting.",
+                  "good": true,
+                  "roast": "Polite, firm, and you thanked him for something he didn't want to do. Clever.",
+                  "soft": "Perfect: polite, firm, and you thanked him for waiting.",
+                  "fr": {
+                    "roast": "Poli, ferme, et vous l'avez remercié pour quelque chose qu'il ne voulait pas faire. Malin.",
+                    "soft": "Parfait : poli, ferme, et vous l'avez remercié d'attendre."
+                  }
+                }
+              ]
+            },
+            {
+              "line": "Ten? The other two must still be at the depot. Just sign for twelve and I'll bring them Tuesday.",
+              "note": "Vous avez compté dix cartons, dont un écrasé.",
+              "replies": [
+                {
+                  "text": "OK, I trust you for Tuesday.",
+                  "good": false,
+                  "roast": "Lovely. On Tuesday, Gary's on holiday and the boxes are a legend. Sign for what you got.",
+                  "soft": "Only sign for what you received: ten boxes.",
+                  "fr": {
+                    "roast": "Parfait. Mardi, Gary est en vacances et les cartons sont une légende. Signez pour ce que vous avez reçu.",
+                    "soft": "Signez seulement pour ce que vous avez reçu : dix cartons."
+                  },
+                  "fix": "Sign for what you got: <b>I'd rather not, if that's OK. I'll sign for ten.</b>"
+                },
+                {
+                  "text": "Your depot is a disaster.",
+                  "good": false,
+                  "roast": "Maybe, but Gary doesn't run the depot, and now he hates you on its behalf.",
+                  "soft": "Blaming the depot won't help. Give positive feedback instead.",
+                  "fr": {
+                    "roast": "Peut-être, mais Gary ne dirige pas le dépôt, et maintenant il vous déteste à sa place.",
+                    "soft": "Accuser le dépôt n'aidera pas. Faites plutôt un retour positif."
+                  },
+                  "fix": "Positive feedback: <b>It would really help if they could check the count.</b>"
+                },
+                {
+                  "text": "I'd rather not, if that's OK. I'll sign for ten and note that one's damaged. Could you let the depot know we're still waiting for two? It would really help if they could check the count before they load next time.",
+                  "good": true,
+                  "roast": "You signed for the truth, and gave the depot feedback without blaming anybody. That's owning it.",
+                  "soft": "Perfect: you signed for the truth and gave feedback in positive language.",
+                  "fr": {
+                    "roast": "Vous avez signé pour la vérité, et fait un retour au dépôt sans accuser personne. Ça, c'est maîtriser la situation.",
+                    "soft": "Parfait : vous avez signé pour la vérité et fait un retour en langage positif."
+                  }
+                }
+              ]
+            }
+          ],
+          "noFix": "Nothing to fix. Gary still waves at you.",
+          "brilliant": "Feedback to the depot in <b>positive language</b>, and no one blamed.",
+          "endTitle": "Ten boxes, one damaged, two on their way, and Gary still waves at you.",
+          "sendoff": {
+            "roast": "See you tomorrow.",
+            "soft": "Brilliant work. See you tomorrow.",
+            "fr": {
+              "roast": "À demain.",
+              "soft": "Excellent travail. À demain."
+            }
+          },
+          "newPhrases": [
+            [
+              "I'd rather not, if that's OK.",
+              "Take a delivery"
+            ],
+            [
+              "Could you let the depot know?",
+              "Take a delivery"
+            ],
+            [
+              "It would really help if they could check the count.",
+              "Take a delivery"
+            ]
+          ]
         }
-      },
-      "newPhrases": [
-        [
-          "Hang on, I'll just check it before I sign.",
-          "Take a delivery"
-        ],
-        [
-          "I'm signing for it as damaged.",
-          "Take a delivery"
-        ],
-        [
-          "Can you note that on the delivery note?",
-          "Take a delivery"
-        ],
-        [
-          "Could you bring it round to the loading bay?",
-          "Take a delivery"
-        ],
-        [
-          "We were expecting twelve, but there are only ten.",
-          "Take a delivery"
-        ]
       ]
     },
     {
